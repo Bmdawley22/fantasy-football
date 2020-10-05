@@ -17,7 +17,7 @@ app.use(methodOverride('_method'));
 app.use(express.static('public'));
 
 app.use(cookieParser());
-/*
+
 const verifyToken = (req,res, next) => {
     let token = req.cookies.jwt
     console.log(`Token: ${token}`)
@@ -31,12 +31,16 @@ const verifyToken = (req,res, next) => {
         next()
     })
 }
-*/
+
 
 //app.use('/fruits', routes.fruits);
 // app.use('/users', routes.users);
-app.use('/auth', routes.auth)
-app.get('/', routes.users);
+app.use('/auth', routes.auth);
+app.use('/users', verifyToken, routes.users);
+
+app.get('/', (req, res) => {
+    res.render('users/home.ejs')
+});
 
 //listen used to run app on port 3000, listen function from express library
 app.listen(process.env.PORT, () => {
