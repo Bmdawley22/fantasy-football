@@ -30,7 +30,19 @@ const rendAvailablePlayers = (req,res) => {
     })
 }
 
+const rendLeague = (req,res) => {
+    User.findAll()
+    .then(users => {
+        res.render('main/league.ejs', {
+            user: users
+        })
+    })
+}
+
+
+
 module.exports = {
     rendRoster,
-    rendAvailablePlayers
+    rendAvailablePlayers,
+    rendLeague
 }
