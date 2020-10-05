@@ -5,12 +5,20 @@ const Player = require('../models').Player;
 const rendRoster = (req,res) => {
     User.findByPk(req.user.id)
     .then(user => {
-        Roster.findOne(
-            {
-                where: { userId: user.id }
+        console.log(user)
+        Roster.findOne({
+            include: [
+                {
+                    model: Player,
+                    attributes: ['id', 'name', 'position', 'team', 'age']
+                }
+            ],
+            where: { 
+                userId: user.id 
             }
-        )
+        })
         .then(roster => {
+            console.log(roster.Players[0].name)
             res.render('main/roster.ejs', {
                 roster: roster,
                 user: user

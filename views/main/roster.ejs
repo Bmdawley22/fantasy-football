@@ -7,6 +7,13 @@
 </head>
 <body>
     <h1><%=user.name%>'s Roster</h1>
+    <% for(let i = 0; i < roster.Players.length; i++) { %>
+        <% if(roster.Players[i].position === "QB") { %>
+            QB: <%= roster.Players[i].name %><br>
+        <% } else if (roster.Players[i].position === "WR") { %>
+            WR1: <%= roster.Players[i].name %><br>
+        <% } %>
+    <% } %>
     QB: <%= roster.QB %><br>
     RB1: <%= roster.RB1 %><br>
     RB2: <%= roster.RB2 %><br>
