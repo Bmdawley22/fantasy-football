@@ -6,10 +6,8 @@ const home = (req,res) => {
 }
 
 const rendProfile = (req, res) => {
-    console.log(req.body)
     User.findByPk(req.user.id)
     .then(showProfile => {
-        console.log(showProfile);
         res.render("users/profile.ejs", {
             users: showProfile
             // index: req.params.index
