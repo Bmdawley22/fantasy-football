@@ -7,11 +7,20 @@
 </head>
 <body>
     <h1><%=user.name%>'s Roster</h1>
+    <% let wrcount = 0 %>
     <% for(let i = 0; i < roster.Players.length; i++) { %>
         <% if(roster.Players[i].position === "QB") { %>
             QB: <%= roster.Players[i].name %><br>
         <% } else if (roster.Players[i].position === "WR") { %>
-            WR1: <%= roster.Players[i].name %><br>
+            <% if (wrcount === 0) { %>
+                WR1: <%= roster.Players[i].name %><br>
+                <% wrcount++ %>
+            <% } else if (wrcount === 1) { %>
+                WR2: <%= roster.Players[i].name %><br>
+                <% wrcount++ %>
+            <% } else if (wrcount === 2) { %>
+                FLEX: <%= roster.Players[i].name %><br>
+            <% } %>
         <% } %>
     <% } %><br><br>
     QB: <%= roster.QB %><br>

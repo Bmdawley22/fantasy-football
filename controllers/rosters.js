@@ -32,7 +32,6 @@ const rendAvailablePlayers = (req,res) => {
         attributes: ['id', 'name', 'position', 'team', 'age', 'roster_id']
     })
     .then(players => {
-        console.log(players[366].roster_id)
         res.render('main/availablePlayers.ejs', {
             player: players
         })
