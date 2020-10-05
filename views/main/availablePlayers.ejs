@@ -8,7 +8,9 @@
 <body>
     <h1>Available Players</h1>
     <% for(let i = 0; i < player.length; i++) { %>
-        <%= player[i].name %> <%= player[i].position %> <%= player[i].team %><br>
+        <% if(player[i].roster_id == null) { %>
+            <%= player[i].name %> <%= player[i].position %> <%= player[i].team %><br>
+        <% } %>
     <% } %>
 </body>
 </html>

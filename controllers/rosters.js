@@ -29,9 +29,10 @@ const rendRoster = (req,res) => {
 
 const rendAvailablePlayers = (req,res) => {
     Player.findAll({
-        attributes: ['id', 'name', 'position', 'team', 'age']
+        attributes: ['id', 'name', 'position', 'team', 'age', 'roster_id']
     })
     .then(players => {
+        console.log(players[366].roster_id)
         res.render('main/availablePlayers.ejs', {
             player: players
         })
