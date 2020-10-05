@@ -39,10 +39,24 @@ const rendLeague = (req,res) => {
     })
 }
 
-
+const rendOtherTeam = (req, res) => {
+    User.findByPk(req.params.index)
+    .then(otherTeam => {
+        Roster.findOne({
+            where: { userId: otherTeam.id }
+        })
+        .then(otherRoster => {
+            res.render('main/otherTeam.ejs', {
+                roster: otherRoster,
+                team: otherTeam
+            })
+        })  
+    })
+}
 
 module.exports = {
     rendRoster,
     rendAvailablePlayers,
-    rendLeague
+    rendLeague,
+    rendOtherTeam
 }
