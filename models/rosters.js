@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      //Rosters.hasOne(models.Users, { foreignKey: userId })
     }
   };
   Rosters.init({
@@ -22,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     TE: DataTypes.STRING,
     FLEX: DataTypes.STRING,
     DST: DataTypes.STRING,
-    K: DataTypes.STRING
+    K: DataTypes.STRING,
+    userId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Rosters',
