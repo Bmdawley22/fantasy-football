@@ -7,35 +7,9 @@
 </head>
 <body>
     <h1><%=user.name%>'s Roster</h1>
-    <% let wrcount = 0 %>
-    <% let rbcount = 0 %>
-    <% for(let i = 0; i < user.Players.length; i++) { %>
-        <% if(user.Players[i].position === "QB") { %>
-            QB: <%= user.Players[i].name %><br>
-        <% } else if (user.Players[i].position === "WR") { %>
-            <% if (wrcount === 0) { %>
-                WR1: <%= user.Players[i].name %><br>
-                <% wrcount++ %>
-            <% } else if (wrcount === 1) { %>
-                WR2: <%= user.Players[i].name %><br>
-                <% wrcount++ %>
-            <% } else if (wrcount === 2 && rbcount < 3) { %>
-                FLEX: <%= user.Players[i].name %><br>
-                <% wrcount++ %>
-            <% } %>
-        <% } else if (user.Players[i].position === "RB") { %>
-            <% if (rbcount === 0) { %>
-                RB1: <%= user.Players[i].name %><br>
-                <% rbcount++ %>
-            <% } else if (rbcount === 1) { %>
-                RB2: <%= user.Players[i].name %><br>
-                <% rbcount++ %>
-            <% } else if (rbcount === 2 && wrcount < 3) { %>
-                FLEX: <%= user.Players[i].name %><br>
-                <% rbcount++ %>
-            <% } %>
-        <% } %>
-        <form action="/rosters/<%=user.Players[i].id%>?_method=PUT" method="POST">
+    <% for(let i = 0; i < roster.length; i++) { %>
+        <%= roster[i].position %>: <%= roster[i].name %>
+        <form action="/rosters/<%=roster[i].id%>?_method=PUT" method="POST">
             <input type="submit" value="Drop Player" />
         </form>
     <% } %><br><br><br>
