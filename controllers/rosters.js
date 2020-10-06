@@ -23,7 +23,7 @@ const rendRoster = (req,res) => {
 
 const rendAvailablePlayers = (req,res) => {
     Player.findAll({
-        attributes: ['id', 'name', 'position', 'team', 'age', 'roster_id']
+        attributes: ['id', 'name', 'position', 'team', 'age', 'userId']
     })
     .then(players => {
         res.render('main/availablePlayers.ejs', {
@@ -59,9 +59,9 @@ const rendOtherTeam = (req, res) => {
 
 const dropPlayer = (req, res) => {
     Player.update(
-        {roster_id: 0},
+        {userId: 0},
         {where: {id: req.params.index}},
-        {attributes: ['id', 'name', 'position', 'team', 'age', 'roster_id']}
+        {attributes: ['id', 'name', 'position', 'team', 'age', 'userId']}
     ).then(() => {
         res.redirect('/rosters')
     })
@@ -89,9 +89,9 @@ const addPlayer = (req, res) => {
             compareNewPlayer = comparePlayer(countArray, foundPlayer);
             if(compareNewPlayer) {
                 Player.update(
-                    {roster_id: foundUser.id},
+                    {userId: foundUser.id},
                     {where: {id: req.params.index}},
-                    {attributes: ['id', 'name', 'position', 'team', 'age', 'roster_id']}
+                    {attributes: ['id', 'name', 'position', 'team', 'age', 'userId']}
                 ).then(() => {
                     res.redirect('/rosters')
                 })
