@@ -98,15 +98,15 @@ const addPlayer = (req, res) => {
         where: { id: req.user.id }
     })
     .then(foundUser => {
-        //console.log(foundUser.Players)
         Player.findByPk(req.params.index, {
             attributes: ['position']
         })
         .then(foundPlayer => {
-            console.log(foundPlayer);
+            
             countArray = orderRoster(foundUser, false);
             console.log(countArray);
             compareNewPlayer = comparePlayer(countArray, foundPlayer);
+            console.log(compareNewPlayer);
             if(compareNewPlayer) {
                 Player.update(
                     {userId: foundUser.id},
@@ -143,7 +143,8 @@ function comparePlayer(arr, player) {
         return true;
     } else if(playerPosition === 'TE' && rosterArray[3] < 1) {
         return true;
-    } else if(rosterArray[4] < 1) {
+    } else if(rosterArray[4] < 1 && 
+        (playerPosition === 'RB' || playerPosition === 'WR' || playerPosition === 'TE')) {
         return true;
     } else if(playerPosition === 'DST' && rosterArray[5] < 1) {
         return true;
