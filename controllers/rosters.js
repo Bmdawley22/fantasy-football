@@ -5,7 +5,6 @@ const Player = require('../models').Player;
 const rendRoster = (req,res) => {
     User.findByPk(req.user.id)
     .then(user => {
-        console.log(user)
         Roster.findOne({
             include: [
                 {
@@ -18,11 +17,10 @@ const rendRoster = (req,res) => {
             }
         })
         .then(roster => {
-            console.log(roster.Players[0].name)
             res.render('main/roster.ejs', {
                 roster: roster,
                 user: user
-        });
+            });
         }) 
     }) 
 }
@@ -61,10 +59,21 @@ const rendOtherTeam = (req, res) => {
         })  
     })
 }
+const dropPlayer = (req, res) => {
+    console.log(req.params.index);
+    Player.update(
+        {roster_id: 0},
+        {where: {id: req.params.index}},
+        {attributes: ['id', 'name', 'position', 'team', 'age', 'roster_id']}
+    ).then(droppedPlayer => {
+        res.redirect('/rosters')
+    })
+}
 
 module.exports = {
     rendRoster,
     rendAvailablePlayers,
     rendLeague,
-    rendOtherTeam
+    rendOtherTeam,
+    dropPlayer
 }

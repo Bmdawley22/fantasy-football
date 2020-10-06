@@ -68,7 +68,6 @@ const login = (req, res) => {
                             expiresIn: '30 days'
                         }
                     )
-                    console.log(token);
                     res.cookie('jwt', token);
                     res.redirect(`/users/profile`);
                 } else {

@@ -6,6 +6,7 @@ router.get('/', ctrl.rosters.rendRoster);
 router.get('/availablePlayers', ctrl.rosters.rendAvailablePlayers);
 router.get('/league', ctrl.rosters.rendLeague);
 router.get('/league/:index', ctrl.rosters.rendOtherTeam);
+router.put('/:index', ctrl.rosters.dropPlayer);
 
 
 module.exports = router;

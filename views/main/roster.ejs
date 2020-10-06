@@ -8,6 +8,7 @@
 <body>
     <h1><%=user.name%>'s Roster</h1>
     <% let wrcount = 0 %>
+    <% let rbcount = 0 %>
     <% for(let i = 0; i < roster.Players.length; i++) { %>
         <% if(roster.Players[i].position === "QB") { %>
             QB: <%= roster.Players[i].name %><br>
@@ -18,10 +19,25 @@
             <% } else if (wrcount === 1) { %>
                 WR2: <%= roster.Players[i].name %><br>
                 <% wrcount++ %>
-            <% } else if (wrcount === 2) { %>
+            <% } else if (wrcount === 2 && rbcount < 3) { %>
                 FLEX: <%= roster.Players[i].name %><br>
+                <% wrcount++ %>
+            <% } %>
+        <% } else if (roster.Players[i].position === "RB") { %>
+            <% if (rbcount === 0) { %>
+                RB1: <%= roster.Players[i].name %><br>
+                <% rbcount++ %>
+            <% } else if (rbcount === 1) { %>
+                RB2: <%= roster.Players[i].name %><br>
+                <% rbcount++ %>
+            <% } else if (rbcount === 2 && wrcount < 3) { %>
+                FLEX: <%= roster.Players[i].name %><br>
+                <% rbcount++ %>
             <% } %>
         <% } %>
+        <form action="/rosters/<%=roster.Players[i].id%>?_method=PUT" method="POST">
+            <input type="submit" value="Drop Player" />
+        </form>
     <% } %><br><br>
     QB: <%= roster.QB %><br>
     RB1: <%= roster.RB1 %><br>
