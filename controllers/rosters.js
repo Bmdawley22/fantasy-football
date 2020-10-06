@@ -102,6 +102,8 @@ function orderRoster(user) {
     let flexCount = 0;
     let dstCount = 0;
     let kCount = 0;
+
+    // Seven for loops to organize an array in the order we want it displayed on our roster page
     for (let i = 0; i < user.Players.length; i++) {
         if(user.Players[i].position === "QB" && qbCount < 1) {
             rosterArray.push(user.Players[i]);
@@ -112,17 +114,12 @@ function orderRoster(user) {
         if(user.Players[i].position === "RB" && rbCount < 2 ) {
             rosterArray.push(user.Players[i]);
             rbCount++;
-        } else if (user.Players[i].position === "RB" && rbCount === 2 ) {
-            rbCount++;
-        }
+        } 
     }
     for (let i = 0; i < user.Players.length; i++) {
         if(user.Players[i].position === "WR" && wrCount < 2 ) {
                 rosterArray.push(user.Players[i]);
                 wrCount++;
-        }
-        else if (user.Players[i].position === "WR" && wrCount === 2 ) {
-            wrCount++;
         }
     }
     for (let i = 0; i < user.Players.length; i++) {
@@ -130,26 +127,32 @@ function orderRoster(user) {
                 rosterArray.push(user.Players[i]);
                 teCount++;
         }
-        else if (user.Players[i].position === "TE" && teCount === 1 ) {
-            teCount++;
-        }
     }
     rbCount2 = 0;
     wrCount2 = 0;
     teCount2 = 0;
+    // For our flex loop, we ran into a few issues. We had to add a second counter for 
+    // each position that could be a FLEX (rb, wr, and te) because our initial counter was already
+    // set to either 2 (for rb and wr) or 1 (for te) and was jumping into the else if statement
+    // and adding the first (rb, wr, or te) as the FLEX player.
     for (let i = 0; i < user.Players.length; i++) {
         if(flexCount <  1) {
-            if((user.Players[i].position === "RB" && rbCount === 3) ||
-               (user.Players[i].position === "WR" && wrCount === 3) ||
-               (user.Players[i].position === "TE" && teCount === 2)) {
-            
-                if((user.Players[i].position === "RB" && rbCount === 3) ||
-                (user.Players[i].position === "WR" && wrCount === 3) ||
-                (user.Players[i].position === "TE" && teCount === 2)) {
-                    rosterArray.push(user.Players[i]);
-                    flexCount++;
-                }
-            }
+            if((user.Players[i].position === "RB" && rbCount2 < 2) ||
+               (user.Players[i].position === "WR" && wrCount2 < 2) ||
+               (user.Players[i].position === "TE" && teCount2 < 1)) {
+                    if(user.Players[i].position === 'RB') {
+                        rbCount2++;
+                    } else if(user.Players[i].position === "WR") {
+                        wrCount2++;
+                    } else if(user.Players[i].position === "TE"){
+                        teCount2++;
+                    }
+            } else if((user.Players[i].position === "RB" && rbCount2 === 2) ||
+                      (user.Players[i].position === "WR" && wrCount2 === 2) ||
+                      (user.Players[i].position === "TE" && teCount2 === 1)) {
+                        rosterArray.push(user.Players[i]);
+                        flexCount++;
+            }   
         } 
     }
     for (let i = 0; i < user.Players.length; i++) {
@@ -159,7 +162,7 @@ function orderRoster(user) {
         }
     }
     for (let i = 0; i < user.Players.length; i++) {
-        if(user.Players[i].position === "K" && kCount < 1 ) {
+        if(user.Players[i].position === "k" && kCount < 1 ) {
                 rosterArray.push(user.Players[i]);
                 kCount++;
         }
