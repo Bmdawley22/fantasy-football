@@ -48,7 +48,6 @@ const rendOtherTeam = (req, res) => {
         ]
     })
     .then(otherTeam => {
-        console.log(otherTeam)
         res.render('main/otherTeam.ejs', {
             team: otherTeam
         })
@@ -60,22 +59,22 @@ const dropPlayer = (req, res) => {
         {roster_id: 0},
         {where: {id: req.params.index}},
         {attributes: ['id', 'name', 'position', 'team', 'age', 'roster_id']}
-    ).then(droppedPlayer => {
+    ).then(() => {
         res.redirect('/rosters')
     })
 }
 
 const addPlayer = (req, res) => {
-    Roster.findOne({
-        where: { userId: req.user.id }
+    User.findOne({
+        where: { id: req.user.id }
     })
-    .then(findRoster => {
-        console.log(findRoster);
+    .then(foundUser => {
+        //console.log(foundUser);
         Player.update(
-            {roster_id: findRoster.id},
+            {roster_id: foundUser.id},
             {where: {id: req.params.index}},
             {attributes: ['id', 'name', 'position', 'team', 'age', 'roster_id']}
-        ).then(droppedPlayer => {
+        ).then(() => {
             res.redirect('/rosters')
         })
     })
