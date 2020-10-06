@@ -13,7 +13,7 @@ const rendRoster = (req,res) => {
         ]
     })
     .then(user => {
-        orderedRoster = orderRoster(user);
+        orderedRoster = orderRoster(user, true);
         res.render('main/roster.ejs', {
             user: user,
             roster: orderedRoster
@@ -69,19 +69,37 @@ const dropPlayer = (req, res) => {
 
 const addPlayer = (req, res) => {
     User.findOne({
+        include: [
+            {
+                model: Player,
+                attributes: ['id', 'name', 'position', 'team', 'age']
+            }
+        ],
         where: { id: req.user.id }
     })
     .then(foundUser => {
-        //console.log(foundUser);
-        Player.update(
-            {roster_id: foundUser.id},
-            {where: {id: req.params.index}},
-            {attributes: ['id', 'name', 'position', 'team', 'age', 'roster_id']}
-        ).then(() => {
-            res.redirect('/rosters')
+        //console.log(foundUser.Players)
+        Player.findByPk(req.params.index, {
+            attributes: ['position']
+        })
+        .then(foundPlayer => {
+            console.log(foundPlayer);
+            countArray = orderRoster(foundUser, false);
+            console.log(countArray);
+            compareNewPlayer = comparePlayer(countArray, foundPlayer);
+            if(compareNewPlayer) {
+                Player.update(
+                    {roster_id: foundUser.id},
+                    {where: {id: req.params.index}},
+                    {attributes: ['id', 'name', 'position', 'team', 'age', 'roster_id']}
+                ).then(() => {
+                    res.redirect('/rosters')
+                })
+            } else {
+                res.send('Cannot add this player');
+            }
         })
     })
-    
 }
 
 module.exports = {
@@ -93,7 +111,30 @@ module.exports = {
     addPlayer
 }
 
-function orderRoster(user) {
+function comparePlayer(arr, player) {
+    const rosterArray = arr;
+    const playerPosition = player.position;
+
+    if(playerPosition === 'QB' && rosterArray[0] < 1) {
+        return true;
+    } else if(playerPosition === 'RB' && rosterArray[1] < 2) {
+        return true;
+    } else if(playerPosition === 'WR' && rosterArray[2] < 2) {
+        return true;
+    } else if(playerPosition === 'TE' && rosterArray[3] < 1) {
+        return true;
+    } else if(rosterArray[4] < 1) {
+        return true;
+    } else if(playerPosition === 'DST' && rosterArray[5] < 1) {
+        return true;
+    } else if(playerPosition === 'k' && rosterArray[6] < 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function orderRoster(user, truthOrFalse) {
     const rosterArray = [];
     let qbCount = 0;
     let wrCount = 0;
@@ -167,5 +208,11 @@ function orderRoster(user) {
                 kCount++;
         }
     }
-    return rosterArray
+    const countArray = [qbCount, rbCount, wrCount, teCount, flexCount, dstCount, kCount];
+    if(truthOrFalse == true) {
+        return rosterArray
+    } else {
+        return countArray
+    }
+    
 }
