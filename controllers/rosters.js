@@ -14,9 +14,18 @@ const rendRoster = (req,res) => {
     })
     .then(user => {
         orderedRoster = orderRoster(user, true);
+        countArray = orderRoster(user, false);
+        let flex = false
+        if(countArray[4] == 1) {
+            flex = true;
+        }
+        let sum = countArray[0] + countArray[1] + countArray[2] + countArray[3];
         res.render('main/roster.ejs', {
             user: user,
-            roster: orderedRoster
+            roster: orderedRoster,
+            count: countArray,
+            flex: flex,
+            sum: sum
         });
     }) 
 }
@@ -51,8 +60,19 @@ const rendOtherTeam = (req, res) => {
         ]
     })
     .then(otherTeam => {
+        orderedRoster = orderRoster(otherTeam, true);
+        countArray = orderRoster(otherTeam, false);
+        let flex = false
+        if(countArray[4] == 1) {
+            flex = true;
+        }
+        let sum = countArray[0] + countArray[1] + countArray[2] + countArray[3];
         res.render('main/otherTeam.ejs', {
-            team: otherTeam
+            team: otherTeam,
+            roster: orderedRoster,
+            count: countArray,
+            flex: flex,
+            sum: sum
         })
     })
 }

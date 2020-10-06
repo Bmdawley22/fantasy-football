@@ -7,8 +7,17 @@
 </head>
 <body>
     <h1><%=team.name%>'s Roster</h1>
-    QB: <%= team.Players[0].name %><br>
-    
+    <% for(let i = 0; i < roster.length; i++) { %>
+        <% if(flex) { %>
+            <% if(i == sum) { %>
+                FLEX: <%= roster[i].name %><br>
+            <% } else { %>
+                <%= roster[i].position %>: <%= roster[i].name %><br>
+            <% } %>
+        <% } else { %>
+            <%= roster[i].position %>: <%= roster[i].name %><br>
+        <% } %>
+    <% } %><br><br><br>
     <a href="/rosters/availablePlayers">View All Players</a><br><br>
     <a href="/rosters/league">View League</a><br><br>
 </body>

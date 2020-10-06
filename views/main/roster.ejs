@@ -8,10 +8,24 @@
 <body>
     <h1><%=user.name%>'s Roster</h1>
     <% for(let i = 0; i < roster.length; i++) { %>
-        <%= roster[i].position %>: <%= roster[i].name %>
-        <form action="/rosters/<%=roster[i].id%>?_method=PUT" method="POST">
-            <input type="submit" value="Drop Player" />
-        </form>
+        <% if(flex) { %>
+            <% if(i == sum) { %>
+                FLEX: <%= roster[i].name %><br>
+                <form action="/rosters/<%=roster[i].id%>?_method=PUT" method="POST">
+                    <input type="submit" value="Drop Player" />
+                </form>
+            <% } else { %>
+                <%= roster[i].position %>: <%= roster[i].name %><br>
+                <form action="/rosters/<%=roster[i].id%>?_method=PUT" method="POST">
+                    <input type="submit" value="Drop Player" />
+                </form>
+            <% } %>
+        <% } else { %>
+            <%= roster[i].position %>: <%= roster[i].name %>
+            <form action="/rosters/<%=roster[i].id%>?_method=PUT" method="POST">
+                <input type="submit" value="Drop Player" />
+            </form>
+        <% } %>
     <% } %><br><br><br>
     <a href="/rosters/availablePlayers">View All Players</a><br><br>
     <a href="/rosters/league">View League</a><br><br>
