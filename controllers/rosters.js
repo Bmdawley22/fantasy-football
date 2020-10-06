@@ -39,17 +39,19 @@ const rendLeague = (req,res) => {
 }
 
 const rendOtherTeam = (req, res) => {
-    User.findByPk(req.params.index)
+    User.findByPk(req.params.index, {
+        include: [
+            {
+                model: Player,
+                attributes: ['id', 'name', 'position', 'team', 'age']
+            }
+        ]
+    })
     .then(otherTeam => {
-        Roster.findOne({
-            where: { userId: otherTeam.id }
+        console.log(otherTeam)
+        res.render('main/otherTeam.ejs', {
+            team: otherTeam
         })
-        .then(otherRoster => {
-            res.render('main/otherTeam.ejs', {
-                roster: otherRoster,
-                team: otherTeam
-            })
-        })  
     })
 }
 

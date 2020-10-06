@@ -7,14 +7,8 @@
 </head>
 <body>
     <h1><%=team.name%>'s Roster</h1>
-    QB: <%= roster.QB %><br>
-    RB1: <%= roster.RB1 %><br>
-    RB2: <%= roster.RB2 %><br>
-    WR1: <%= roster.WR1 %><br>
-    WR2: <%= roster.WR2 %><br>
-    FLEX: <%= roster.FLEX %><br>
-    DST: <%= roster.DST %><br>
-    K: <%= roster.K %><br><br><br>
+    QB: <%= team.Players[0].name %><br>
+    
     <a href="/rosters/availablePlayers">View All Players</a><br><br>
     <a href="/rosters/league">View League</a><br><br>
 </body>
