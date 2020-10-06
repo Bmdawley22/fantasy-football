@@ -9,37 +9,37 @@
     <h1><%=user.name%>'s Roster</h1>
     <% let wrcount = 0 %>
     <% let rbcount = 0 %>
-    <% for(let i = 0; i < roster.Players.length; i++) { %>
-        <% if(roster.Players[i].position === "QB") { %>
-            QB: <%= roster.Players[i].name %><br>
-        <% } else if (roster.Players[i].position === "WR") { %>
+    <% for(let i = 0; i < user.Players.length; i++) { %>
+        <% if(user.Players[i].position === "QB") { %>
+            QB: <%= user.Players[i].name %><br>
+        <% } else if (user.Players[i].position === "WR") { %>
             <% if (wrcount === 0) { %>
-                WR1: <%= roster.Players[i].name %><br>
+                WR1: <%= user.Players[i].name %><br>
                 <% wrcount++ %>
             <% } else if (wrcount === 1) { %>
-                WR2: <%= roster.Players[i].name %><br>
+                WR2: <%= user.Players[i].name %><br>
                 <% wrcount++ %>
             <% } else if (wrcount === 2 && rbcount < 3) { %>
-                FLEX: <%= roster.Players[i].name %><br>
+                FLEX: <%= user.Players[i].name %><br>
                 <% wrcount++ %>
             <% } %>
-        <% } else if (roster.Players[i].position === "RB") { %>
+        <% } else if (user.Players[i].position === "RB") { %>
             <% if (rbcount === 0) { %>
-                RB1: <%= roster.Players[i].name %><br>
+                RB1: <%= user.Players[i].name %><br>
                 <% rbcount++ %>
             <% } else if (rbcount === 1) { %>
-                RB2: <%= roster.Players[i].name %><br>
+                RB2: <%= user.Players[i].name %><br>
                 <% rbcount++ %>
             <% } else if (rbcount === 2 && wrcount < 3) { %>
-                FLEX: <%= roster.Players[i].name %><br>
+                FLEX: <%= user.Players[i].name %><br>
                 <% rbcount++ %>
             <% } %>
         <% } %>
-        <form action="/rosters/<%=roster.Players[i].id%>?_method=PUT" method="POST">
+        <form action="/users/<%=user.Players[i].id%>?_method=PUT" method="POST">
             <input type="submit" value="Drop Player" />
         </form>
     <% } %><br><br><br>
-    <a href="/rosters/availablePlayers">View All Players</a><br><br>
-    <a href="/rosters/league">View League</a><br><br>
+    <a href="/users/availablePlayers">View All Players</a><br><br>
+    <a href="/users/league">View League</a><br><br>
 </body>
 </html>
