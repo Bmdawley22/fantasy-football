@@ -9,19 +9,12 @@ const rendRoster = (req,res) => {
                 model: Player,
                 attributes: ['id', 'name', 'position', 'team', 'age']
             }
-        ]/*,
-            where: { 
-                userId: user.id 
-            }*/
+        ]
     })
     .then(user => {
-       // Roster.findOne({     
-        //.then(roster => {
             res.render('main/roster.ejs', {
-                //roster: roster,
                 user: user
             });
-        //}) 
     }) 
 }
 
