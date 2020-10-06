@@ -20,7 +20,7 @@ app.use(cookieParser());
 
 const verifyToken = (req,res, next) => {
     let token = req.cookies.jwt
-    console.log(`Token: ${token}`)
+    // console.log(`Token: ${token}`)
 
     jwt.verify(token, process.env.JWT_SECRET, (err, decodedUser) => {
         if(err || !decodedUser) {

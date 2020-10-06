@@ -59,8 +59,8 @@ const rendOtherTeam = (req, res) => {
         })  
     })
 }
+
 const dropPlayer = (req, res) => {
-    console.log(req.params.index);
     Player.update(
         {roster_id: 0},
         {where: {id: req.params.index}},
@@ -70,10 +70,28 @@ const dropPlayer = (req, res) => {
     })
 }
 
+const addPlayer = (req, res) => {
+    Roster.findOne({
+        where: { userId: req.user.id }
+    })
+    .then(findRoster => {
+        console.log(findRoster);
+        Player.update(
+            {roster_id: findRoster.id},
+            {where: {id: req.params.index}},
+            {attributes: ['id', 'name', 'position', 'team', 'age', 'roster_id']}
+        ).then(droppedPlayer => {
+            res.redirect('/rosters')
+        })
+    })
+    
+}
+
 module.exports = {
     rendRoster,
     rendAvailablePlayers,
     rendLeague,
     rendOtherTeam,
-    dropPlayer
+    dropPlayer,
+    addPlayer
 }
