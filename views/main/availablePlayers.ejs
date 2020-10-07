@@ -7,6 +7,16 @@
 </head>
 <body>
     <h1>Available Players</h1>
+    <form action="/rosters/filter" method="POST">
+        Filter <select name="position">
+            <% for (let i=0; i < positions.length; i++) { %>
+                <option value="<%= positions[i] %>"><%= positions[i] %></option>
+            <% } %>
+        </select>
+        <input type="submit" value="Filter">
+        <br><br>
+    </form>
+    
     
     <% for(let i = 0; i < player.length; i++) { %>
         <% if(player[i].roster_id == null || player[i].roster_id == 0) { %>

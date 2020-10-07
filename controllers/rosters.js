@@ -1,16 +1,14 @@
 const User = require('../models').Users;
 const Player = require('../models').Player;
 
-
+let filterPosition = 'All';
 
 const rendRoster = (req,res) => {
     User.findByPk(req.user.id, {
-        include: [
-            {
+        include: [{
                 model: Player,
                 attributes: ['id', 'name', 'position', 'team', 'age']
-            }
-        ]
+        }]
     })
     .then(user => {
         orderedRoster = orderRoster(user, true);
@@ -29,17 +27,38 @@ const rendRoster = (req,res) => {
         });
     }) 
 }
-
-const rendAvailablePlayers = (req,res) => {
-    Player.findAll({
-        attributes: ['id', 'name', 'position', 'team', 'age', 'userId']
-    })
-    .then(players => {
-        res.render('main/availablePlayers.ejs', {
-            player: players
-        })
-    })
+const filter = (req, res) => {
+    filterPosition = req.body.position;
+    console.log(req.body.position)
+    res.redirect('/rosters/availablePlayers');
 }
+const rendAvailablePlayers = (req,res) => {
+    if (filterPosition === "All") {
+        Player.findAll(
+           { attributes: ['id', 'name', 'position', 'team', 'age', 'userId'] }    
+        )
+        .then(players => {
+            positionArr = ['All','QB', 'RB','WR','TE','DST','k'];
+            res.render('main/availablePlayers.ejs', {
+                player: players,
+                positions: positionArr
+            })
+        })
+    } else {
+        Player.findAll(
+            { where: { "position": filterPosition },
+            attributes: ['id', 'name', 'position', 'team', 'age', 'userId'] }    
+        )
+        .then(players => {
+            positionArr = ['All','QB', 'RB','WR','TE','DST','k'];
+            res.render('main/availablePlayers.ejs', {
+                player: players,
+                positions: positionArr
+            })
+        })
+    }
+}
+
 
 const rendLeague = (req,res) => {
     User.findAll()
@@ -125,6 +144,7 @@ const addPlayer = (req, res) => {
 module.exports = {
     rendRoster,
     rendAvailablePlayers,
+    filter,
     rendLeague,
     rendOtherTeam,
     dropPlayer,
