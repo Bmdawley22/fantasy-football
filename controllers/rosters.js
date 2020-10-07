@@ -2,12 +2,15 @@ const User = require('../models').Users;
 const Player = require('../models').Player;
 
 let filterPosition = 'All';
+let filterTeam = 'All';
+let positionArr = ['All','QB', 'RB','WR','TE','DST','k'];
+let teamArr = ["ARI",	"ATL",	"BAL",	"BAL",	"BUF",	"CAR",	"CHI",	"CHI",	"CIN",	"CLE",	"DAL",	"DAL",	"DEN",	"DEN",	"DET",	"GNB",	"HOU",	"IND",	"IND",	"JAX",	"KAN",	"LAC",	"LAC",	"LAR",	"LVR",	"MIA",	"MIN",	"NOR",	"NOR",	"NWE",	"NYG",	"NYJ",	"NYJ",	"PHI",	"PIT",	"SEA",	"SFO",	"SFO",	"TAM",	"TEN",	"WAS"];
 
 const rendRoster = (req,res) => {
     User.findByPk(req.user.id, {
         include: [{
-                model: Player,
-                attributes: ['id', 'name', 'position', 'team', 'age']
+            model: Player,
+            attributes: ['id', 'name', 'position', 'team', 'age']
         }]
     })
     .then(user => {
@@ -29,34 +32,68 @@ const rendRoster = (req,res) => {
 }
 const filter = (req, res) => {
     filterPosition = req.body.position;
-    console.log(req.body.position)
+    filterTeam = req.body.teams;
     res.redirect('/rosters/availablePlayers');
 }
 const rendAvailablePlayers = (req,res) => {
-    if (filterPosition === "All") {
+    if (filterPosition === "All" && filterTeam === "All") {
         Player.findAll(
            { attributes: ['id', 'name', 'position', 'team', 'age', 'userId'] }    
         )
         .then(players => {
-            positionArr = ['All','QB', 'RB','WR','TE','DST','k'];
             res.render('main/availablePlayers.ejs', {
                 player: players,
-                positions: positionArr
+                positions: positionArr,
+                teams: teamArr,
+                currentPos: filterPosition,
+                currTeam: filterTeam
             })
         })
-    } else {
+    } else if (filterPosition !== "All" && filterTeam === "All") {
         Player.findAll(
             { where: { "position": filterPosition },
             attributes: ['id', 'name', 'position', 'team', 'age', 'userId'] }    
         )
         .then(players => {
-            positionArr = ['All','QB', 'RB','WR','TE','DST','k'];
             res.render('main/availablePlayers.ejs', {
                 player: players,
-                positions: positionArr
+                positions: positionArr,
+                teams: teamArr,
+                currentPos: filterPosition,
+                currTeam: filterTeam
             })
         })
     }
+    else if (filterPosition === "All" && filterTeam !== "All") {
+        Player.findAll(
+            { where: { "team": filterTeam },
+            attributes: ['id', 'name', 'position', 'team', 'age', 'userId'] }    
+        )
+        .then(players => {
+            res.render('main/availablePlayers.ejs', {
+                player: players,
+                positions: positionArr,
+                teams: teamArr,
+                currentPos: filterPosition,
+                currTeam: filterTeam
+            })
+        })
+    } else if (filterPosition !== "All" && filterTeam !== "All") {
+        Player.findAll(
+            { where: { "team": filterTeam,
+                       "position": filterPosition},
+            attributes: ['id', 'name', 'position', 'team', 'age', 'userId'] }    
+        )
+        .then(players => {
+            res.render('main/availablePlayers.ejs', {
+                player: players,
+                positions: positionArr,
+                teams: teamArr,
+                currentPos: filterPosition,
+                currTeam: filterTeam
+            })
+        })
+    } 
 }
 
 
