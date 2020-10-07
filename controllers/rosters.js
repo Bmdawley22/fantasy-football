@@ -6,6 +6,16 @@ let filterTeam = 'All';
 let positionArr = ['All','QB', 'RB','WR','TE','DST','k'];
 let teamArr = ["ARI",	"ATL",	"BAL",	"BAL",	"BUF",	"CAR",	"CHI",	"CHI",	"CIN",	"CLE",	"DAL",	"DAL",	"DEN",	"DEN",	"DET",	"GNB",	"HOU",	"IND",	"IND",	"JAX",	"KAN",	"LAC",	"LAC",	"LAR",	"LVR",	"MIA",	"MIN",	"NOR",	"NOR",	"NWE",	"NYG",	"NYJ",	"NYJ",	"PHI",	"PIT",	"SEA",	"SFO",	"SFO",	"TAM",	"TEN",	"WAS"];
 
+const searchPlayer = (req, res) => {
+    Player.findAll(
+        { attributes: ['id', 'name', 'position', 'team', 'age', 'userId'] }    
+     )
+     .then(players => {
+        res.render('main/searchPlayers.ejs', {
+            player: players
+        })
+     })
+}
 const rendRoster = (req,res) => {
     User.findByPk(req.user.id, {
         include: [{
@@ -179,6 +189,7 @@ const addPlayer = (req, res) => {
 }
 
 module.exports = {
+    searchPlayer,
     rendRoster,
     rendAvailablePlayers,
     filter,

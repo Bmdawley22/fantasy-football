@@ -8,22 +8,10 @@
 <body>
     <h1>Available Players</h1>
     <form action="/rosters/filter" method="POST">
-        Filter by Position <select name="position">
-            <option value="<%=currentPos%>"><%=currentPos%></option>
-            <% for (let i=0; i < positions.length; i++) { %>
-                <option value="<%= positions[i] %>"><%= positions[i] %></option>
-            <% } %>
-        </select>
-        Filter by Team <select name="teams">
-        <option value="<%=currTeam%>"><%=currTeam%></option>
-            <% for (let i=0; i < teams.length; i++) { %>
-                <option value="<%= teams[i] %>"><%= teams[i] %></option>
-            <% } %>
-        </select>
         <input type="submit" value="Filter">
         <br><br>
     </form>
-    <form action="/rosters/search" method="get">
+    <form action="/rosters/search" method="POST">
         <input type="submit" value="Search" />
     </form>
     
