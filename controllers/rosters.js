@@ -187,12 +187,9 @@ const addPlayer = (req, res) => {
         Player.findByPk(req.params.index, {
             attributes: ['position']
         })
-        .then(foundPlayer => {
-            
+        .then(foundPlayer => {         
             countArray = orderRoster(foundUser, false);
-            console.log(countArray);
             compareNewPlayer = comparePlayer(countArray, foundPlayer);
-            console.log(compareNewPlayer);
             if(compareNewPlayer) {
                 Player.update(
                     {userId: foundUser.id},
