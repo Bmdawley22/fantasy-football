@@ -4,27 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/app.css" />
+    <link rel="stylesheet" href="/css/home.css" />
 </head>
-<body>
-    <h1>Welcome <%= users.name %></h1>
-
+<body><br><br><br><br>
+    <h1><div>Welcome <%= users.name %></div></h1><br><br>
+    <div class="nav-container">
+        <div class='container-items' id='profile'><a class='container-item' id='profile-box' href="/users/profile">Your Profile</a></div>
+        <div class='container-items' id='roster'><a class='container-item' id='roster-box' href="/rosters">Your Roster</a></div>
+        <div class='container-items' id='league'><a class='container-item' id='league-box' href="/rosters/league">Your League</a></div>
+        <div class='container-items' id='players'><a class='container-item' id='players-box' href="/rosters/availablePlayers">All Available Players</a></div>
+    </div><br><br><br><br><br>
     <form action="/users/profile?_method=PUT" method="POST">
-        Name: <input type="text" name="name" value="<%= users.name %>" /><br>
-        Team Name: <input type="text" name="teamName" value="<%= users.teamName %>" /><br>
-        Username: <input type="text" name="username" value="<%= users.username %>"/><br>
-        Password: <input type="text" name="password" value="<%= users.password %>"/><br><br>
-        <input type="submit" value="Edit Profile"><br><br>
+        <span class="name items">Name: </span><input class="input" type="text" name="name" value="<%= users.name %>" /><br>
+        <span class="teamName items">Team Name: </span><input class="input" type="text" name="teamName" value="<%= users.teamName %>" /><br>
+        <span class="username items">Username: </span><input class="input" type="text" name="username" value="<%= users.username %>"/><br>
+        <span class="password items">Password: </span><input class="input" type="text" name="password" value="<%= users.password %>"/><br><br>
+        <input id='editButton' type="submit" value="Edit Profile"><br><br><br><br>
     </form>
-    <a href="/rosters">Team Roster</a>
-</br> </br>
-    <a href="">League</a>
-
-</br> </br>
     <form action="/users/profile?_method=DELETE" method="POST">
-        <input type="submit" value="Delete" />
+        <input type="submit" value="Delete Entire Profile" />
     </form><br><br><br>
-
-    <a href="/">Log Out</a>
+    
+    <div class="logout-container">
+        <div ><a class='container-item' id='logout-box' href="/">Log Out</a></div>
+    </div>
 </body>
 </html>

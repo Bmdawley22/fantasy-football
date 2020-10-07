@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/home.css" />
 </head>
-<body>
-    <h1>Log In</h1>
+<body><br><br><br><br><br><br><br>
+    <h1>Log In</h1><br><br>
 
     <form action="/auth/login" method="POST">
-        Username: <input type="text" name="username" /><br>
-        Password: <input type="text" name="password" /><br>
-        <input type="submit" name="" value="Login" />
+        <span class="username items">Username: </span><input class="input" type="text" name="username" placeholder="Username" /><br>
+        <span class="password items">Password: </span><input class="input" type="text" name="password" placeholder="Password" /><br><br>
+        <input id="editButton" type="submit" name="" value="Login" />
     </form>
 </body>
 </html>
