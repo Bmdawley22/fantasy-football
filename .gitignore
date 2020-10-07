@@ -39,7 +39,6 @@ build/Release
 
 # Dependency directories
 node_modules/
-config/
 
 # TypeScript v1 declaration files
 typings/
