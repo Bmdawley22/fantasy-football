@@ -1,0 +1,21 @@
+body {
+    background-image: url("https://i.pinimg.com/originals/f6/ea/00/f6ea000fea4f2e267ffe7ad0d1bc474c.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+a {
+    color: black;
+    background-color: white;
+    text-decoration: none;
+    border: 2px solid black;
+    padding: 10px;
+    margin: 0px 10px;
+}
