@@ -1,21 +1,51 @@
 const User = require('../models').Users;
 const Player = require('../models').Player;
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 let filterPosition = 'All';
 let filterTeam = 'All';
 let positionArr = ['All','QB', 'RB','WR','TE','DST','k'];
-let teamArr = ["ARI",	"ATL",	"BAL",	"BAL",	"BUF",	"CAR",	"CHI",	"CHI",	"CIN",	"CLE",	"DAL",	"DAL",	"DEN",	"DEN",	"DET",	"GNB",	"HOU",	"IND",	"IND",	"JAX",	"KAN",	"LAC",	"LAC",	"LAR",	"LVR",	"MIA",	"MIN",	"NOR",	"NOR",	"NWE",	"NYG",	"NYJ",	"NYJ",	"PHI",	"PIT",	"SEA",	"SFO",	"SFO",	"TAM",	"TEN",	"WAS"];
+let teamArr = ["All", "ARI", "ATL",	"BAL", "BUF", "CAR", "CHI",	"CIN", "CLE", "DAL", "DEN",	"DET", "GNB", "HOU", "IND",	"JAX", "KAN", "LAC", "LAR",	"LVR", "MIA", "MIN", "NOR",	"NWE", "NYG", "NYJ", "PHI",	"PIT", "SEA", "SFO", "TAM",	"TEN", "WAS"];
 
-const searchPlayer = (req, res) => {
+
+const rendSearchPlayer = (req, res) => {
     Player.findAll(
         { attributes: ['id', 'name', 'position', 'team', 'age', 'userId'] }    
      )
      .then(players => {
         res.render('main/searchPlayers.ejs', {
-            player: players
+            player: players,
+            lastValue: "Search..."
         })
      })
 }
+
+const searchPlayer = (req, res) => {
+    let inputPlayer = `${req.body.name}`;
+    for(let i = 0; i < inputPlayer.length; i++) {
+        if(i == 0) {
+            let inputPlayerFirstCap = inputPlayer.substring(0,1).toUpperCase();
+            inputPlayer = `${inputPlayerFirstCap}${inputPlayer.substring(1)}`
+        } 
+        if(inputPlayer[i] == ' ' && i != (inputPlayer.length-1)) {
+            let inputPlayerMiddleCap = inputPlayer.substring(i+1,i+2).toUpperCase();
+            inputPlayer = `${inputPlayer.substring(0,i+1)}${inputPlayerMiddleCap}${inputPlayer.substring(i+2)}`
+        }
+    }
+    console.log(inputPlayer);
+    Player.findAll(
+        { where: { "name": { [Op.like]: `%${inputPlayer}%` }},
+        attributes: ['id', 'name', 'position', 'team', 'age', 'userId'] }
+    )
+    .then(players => {
+        res.render('main/searchPlayers.ejs', {
+            player: players,
+            lastValue: inputPlayer
+        })
+     })
+}
+
 const rendRoster = (req,res) => {
     User.findByPk(req.user.id, {
         include: [{
@@ -189,6 +219,7 @@ const addPlayer = (req, res) => {
 }
 
 module.exports = {
+    rendSearchPlayer,
     searchPlayer,
     rendRoster,
     rendAvailablePlayers,

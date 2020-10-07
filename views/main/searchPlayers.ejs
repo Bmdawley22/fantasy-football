@@ -12,7 +12,8 @@
         <br><br>
     </form>
     <form action="/rosters/search" method="POST">
-        <input type="submit" value="Search" />
+        Player Name: <input type="text" name='name' placeholder="<%= lastValue %>" />
+        <input type="submit" value="Search for Player"><br><br>
     </form>
     
     <% for(let i = 0; i < player.length; i++) { %>
