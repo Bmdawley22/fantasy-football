@@ -22,20 +22,28 @@ const rendSearchPlayer = (req, res) => {
 }
 
 const searchPlayer = (req, res) => {
+    let temp = '';
+    let string = '';
+    let tempSpace = '';
     let inputPlayer = `${req.body.name}`;
     for(let i = 0; i < inputPlayer.length; i++) {
         if(i == 0) {
-            let inputPlayerFirstCap = inputPlayer.substring(0,1).toUpperCase();
-            inputPlayer = `${inputPlayerFirstCap}${inputPlayer.substring(1)}`
-        } 
-        if(inputPlayer[i] == ' ' && i != (inputPlayer.length-1)) {
-            let inputPlayerMiddleCap = inputPlayer.substring(i+1,i+2).toUpperCase();
-            inputPlayer = `${inputPlayer.substring(0,i+1)}${inputPlayerMiddleCap}${inputPlayer.substring(i+2)}`
+            temp = inputPlayer.substring(0,1).toUpperCase();
+        } else if(inputPlayer[i] == ' ' && i != (inputPlayer.length-1)) {
+            temp = inputPlayer.substring(i+1,i+2).toUpperCase();
+            tempSpace = inputPlayer.substring(i,i+1);
+        } else if(inputPlayer[i-1] == ' '){
+            temp = '';
+        } else {
+            temp = inputPlayer.substring(i,i+1).toLowerCase();
         }
+        string = `${string}${tempSpace}${temp}`;
+        console.log(string);
+        tempSpace = '';
     }
-    console.log(inputPlayer);
+    console.log(string);
     Player.findAll(
-        { where: { "name": { [Op.like]: `%${inputPlayer}%` }},
+        { where: { "name": { [Op.like]: `%${string}%` }},
         attributes: ['id', 'name', 'position', 'team', 'age', 'userId'] }
     )
     .then(players => {
