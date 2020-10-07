@@ -342,5 +342,30 @@ function orderRoster(user, truthOrFalse) {
     } else {
         return countArray
     }
-    
+}
+
+function stringHandler(input) {
+    let temp = '';
+    let temp2 = '';
+    let string = '';
+    for(let i = 0; i < input.length; i++) {
+        if(i == 0) {
+            temp = input.substring(0,1).toUpperCase();
+        } else {
+            if(input[i] == ' ' && i != (input.length-1)) {
+                temp = ' ';
+                temp2 = input.substring(i+1,i+2).toUpperCase();
+            }
+            else if (input[i-1] != ' ') {
+                temp = input.substring(i,i+1).toLowerCase();
+                temp2 = '';
+            }
+            else {
+                temp = '';
+                temp2 = '';
+            }
+        }
+        string = string + temp + temp2;
+    }
+    return string
 }
