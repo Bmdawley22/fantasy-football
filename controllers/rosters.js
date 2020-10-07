@@ -16,32 +16,14 @@ const rendSearchPlayer = (req, res) => {
      .then(players => {
         res.render('main/searchPlayers.ejs', {
             player: players,
-            lastValue: "Search..."
+            lastValue: ''
         })
      })
 }
 
 const searchPlayer = (req, res) => {
-    let temp = '';
-    let string = '';
-    let tempSpace = '';
     let inputPlayer = `${req.body.name}`;
-    for(let i = 0; i < inputPlayer.length; i++) {
-        if(i == 0) {
-            temp = inputPlayer.substring(0,1).toUpperCase();
-        } else if(inputPlayer[i] == ' ' && i != (inputPlayer.length-1)) {
-            temp = inputPlayer.substring(i+1,i+2).toUpperCase();
-            tempSpace = inputPlayer.substring(i,i+1);
-        } else if(inputPlayer[i-1] == ' '){
-            temp = '';
-        } else {
-            temp = inputPlayer.substring(i,i+1).toLowerCase();
-        }
-        string = `${string}${tempSpace}${temp}`;
-        console.log(string);
-        tempSpace = '';
-    }
-    console.log(string);
+    string = stringHandler(inputPlayer)
     Player.findAll(
         { where: { "name": { [Op.like]: `%${string}%` }},
         attributes: ['id', 'name', 'position', 'team', 'age', 'userId'] }
