@@ -49,7 +49,7 @@ const searchPlayer = (req, res) => {
     .then(players => {
         res.render('main/searchPlayers.ejs', {
             player: players,
-            lastValue: inputPlayer
+            lastValue: string
         })
      })
 }
