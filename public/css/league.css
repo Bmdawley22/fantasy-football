@@ -131,3 +131,15 @@ td {
 .playerInfo a:hover {
     color: blue;
 }
+
+#league-page {
+    grid-column: 2;
+    grid-row: 1;
+    text-decoration: underline;
+    background-color: #29339B;
+    border: 3px solid #29339B;
+}
+
+.logout-container {
+    text-align: center;
+}
