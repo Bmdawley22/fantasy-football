@@ -58,10 +58,10 @@
 9. Example of Home Page of Website:
 ![homepage](public/images/FantasyFootballHomepage.png)
 
-10. Wireframe
+10. Wireframe:
 ![wireframe1](public/images/FantasyFootball1.png)
 ![wireframe2](public/images/FantasyFootball2.png)
 
-11. ERD
+11. ERD:
 ![ERD](public/images/ERDFantasyFootball.png)
 
