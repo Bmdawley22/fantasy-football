@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/players.css" />
 </head>
 <body>
-    <h1>Available Players</h1>
+    <h1>Filter Available Players</h1>
     <div id="filterBar">
         <form id="filterButtons" action="/rosters/filter" method="POST">
             <p>Filter by Position</p> <select id="posSelect" name="position" >
@@ -16,16 +16,13 @@
                     <option value="<%= positions[i] %>"><%= positions[i] %></option>
                 <% } %>
             </select>
-            Filter by Team <select name="teams">
+            <p>Filter by Team</p> <select name="teams">
             <option value="<%=currTeam%>"><%=currTeam%></option>
                 <% for (let i=0; i < teams.length; i++) { %> 
                     <option value="<%= teams[i] %>"><%= teams[i] %></option>
                 <% } %>
             </select>
             <input type="submit" value="Filter">
-        </form>
-        <form action="/rosters/search" method="GET">
-            <input type="submit" value="Search" />
         </form>
     </div>
         

@@ -10,7 +10,7 @@ h1 {
     border: solid #29339B 10px;
     border-radius: 10px;
     text-align: center;
-    font-size: 4vw;
+    font-size: 3vw;
     width: 40vw;
     margin: 2vh auto;
     padding: 5px;
@@ -24,7 +24,7 @@ h1 {
     border-radius: 10px;
     width: 80vw;
     margin: auto;
-    padding: 1vh 0;
+    padding: 1.5vh 0;
 }
 #filterBar #filterButtons {
     width: 53vw;

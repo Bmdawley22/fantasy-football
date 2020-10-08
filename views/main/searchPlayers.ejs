@@ -7,13 +7,10 @@
     <link rel="stylesheet" href="/css/players.css" />
 </head>
 <body>
-    <h1>Available Players</h1>
+    <h1>Search Available Players</h1>
     <div id="filterBar">
-        <form action="/rosters/availablePlayers" method="GET">
-            <input type="submit" value="Filter">
-        </form>
-        <form action="/rosters/search" method="POST">
-            Player Name: <input type="text" name='name' value="<%= lastValue %>" />
+        <form id="filterButtons" action="/rosters/search" method="POST">
+            <span>Player Name: </span><input type="text" name='name' value="<%= lastValue %>" />
             <input type="submit" value="Search for Player">
         </form>
     </div>
