@@ -42,10 +42,10 @@
     1. Google Chrome Developer Tools: Used to debug issues in Javascript and also used to see what HTML elements to target when trying to style with CSS.
     1. Visual Studio Code: Used for coding in HTML, CSS, and Javascript.
     1. Wireframe.cc: Used to plan the HTML and CSS portions of the project.
-    1. Node.js:
-    1. Postgres:
-    1. Express:
-    1. EJS:
+    1. Node.js: Backe-end JS runtime environment..
+    1. Postgres: Database used to store data for our User model and Players Model.
+    1. Express: Framework used during development.
+    1. EJS: Used to embed JS in HTML.
 
 7. Installation:
     1. Google Chrome would be nice since that browser was the one used for debugging
@@ -56,12 +56,12 @@
     1. Integrate a Player Stats Model to allow new users to football to be able to see who was good last year and still pick decent players.
 
 9. Example of Home Page of Website:
-![homepage](public/img/FantasyFootballHomepage.png)
+![homepage](public/images/FantasyFootballHomepage.png)
 
 10. Wireframe
-![wireframe1](public/img/FantasyFootball1.png)
-![wireframe2](public/img/FantasyFootball2.png)
+![wireframe1](public/images/FantasyFootball1.png)
+![wireframe2](public/images/FantasyFootball2.png)
 
 11. ERD
-![erd](public/img/ERDFantasyFootball.png)
+![ERD](public/images/ERDFantasyFootball.png)
 
