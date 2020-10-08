@@ -159,3 +159,16 @@ input {
     background-color: #29339B;
     border: 3px solid #29339B;
 }
+
+.button-hover {
+    background-color: #29339B;
+    border: solid #29339B 3px;
+    border-radius: 3px;
+    color: white;
+}
+
+.button-hover:hover {
+    background-color: white;
+    border: solid white 3px;
+    color: #29339B;
+}

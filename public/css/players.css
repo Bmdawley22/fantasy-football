@@ -35,7 +35,6 @@ a {
     display: flex;
     justify-content: center;
     align-content: center;
-    margin: -1px;
 }
 
 .container-item {
@@ -169,4 +168,20 @@ td {
     background-color: white;
     border: solid white 3px;
     color: #29339B;
+}
+
+#players-page {
+    grid-column: 3;
+    grid-row: 1;
+    text-decoration: underline;
+    background-color: #29339B;
+    border: 3px solid #29339B;
+}
+
+#search-page {
+    grid-column: 3;
+    grid-row: 2;
+    text-decoration: underline;
+    background-color: #29339B;
+    border: 3px solid #29339B;
 }

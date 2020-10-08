@@ -21,10 +21,10 @@
         <span class="teamName items">Team Name: </span><input class="input" type="text" name="teamName" value="<%= users.teamName %>" /><br>
         <span class="username items">Username: </span><input class="input" type="text" name="username" value="<%= users.username %>"/><br>
         <span class="password items">Password: </span><input class="input" type="text" name="password" value="<%= users.password %>"/><br><br>
-        <input id='editButton' type="submit" value="Click to Edit Profile"><br><br><br><br>
+        <input class="button-hover" id='editButton' type="submit" value="Click to Edit Profile"><br><br><br><br>
     </form>
     <form action="/users/profile?_method=DELETE" method="POST">
-        <input type="submit" value="Delete Entire Profile" />
+        <input class="button-hover" type="submit" value="Delete Entire Profile" />
     </form><br><br><br>
     
     <div class="logout-container">
