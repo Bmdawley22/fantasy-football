@@ -3,34 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="stylesheet" href="/css/roster.css" />
     <title>Document</title>
 </head>
 <body>
     <h1><%=user.name%>'s Roster</h1>
-    <div id="roster">
-        <% for(let i = 0; i < roster.length; i++) { %>
-            <% if(flex) { %>
-                <% if(i == sum) { %>
-                    FLEX: <%= roster[i].name %><br>
-                    <form action="/rosters/<%=roster[i].id%>?_method=PUT" method="POST">
-                        <input type="submit" value="Drop Player" />
-                    </form>
+    <div class="nav-container">
+        <div class='container-items' id='profile'><a class='container-item' id='profile-box' href="/users/profile">Your Profile</a></div>
+        <div class='container-items' id='roster'><a class='container-item' id='roster-box' href="/rosters">Your Roster</a></div>
+        <div class='container-items' id='league'><a class='container-item' id='league-box' href="/rosters/league">Your League</a></div>
+        <div class='container-items' id='players'><a class='container-item' id='players-box' href="/rosters/availablePlayers">Filter Players</a></div>
+        <div class='container-items' id='search'><a class='container-item' id='players-box' href="/rosters/search">Search Players</a></div>
+        <div class='container-items' id='rules'><a class='container-item' id='players-box' href="/rosters/league/rules">League Rules</a></div>
+    </div><br>
+    <div id="playerScroll">
+        <table id="playerTable">
+            <tr id="playerHeader">
+                <th class="name">Player</th>
+                <th class="pos">Position</th>
+                <th class="team">Team</th>
+                <th></th>
+            </tr>
+            <% for(let i = 0; i < roster.length; i++) { %>
+                <% if(flex) { %>
+                    <% if(i == sum) { %>
+                        FLEX: <%= roster[i].name %><br>
+                        <form action="/rosters/<%=roster[i].id%>?_method=PUT" method="POST">
+                            <input type="submit" value="Drop Player" />
+                        </form>
+                    <% } else { %>
+                        <%= roster[i].position %>: <%= roster[i].name %><br>
+                        <form action="/rosters/<%=roster[i].id%>?_method=PUT" method="POST">
+                            <input type="submit" value="Drop Player" />
+                        </form>
+                    <% } %>
                 <% } else { %>
-                    <%= roster[i].position %>: <%= roster[i].name %><br>
+                    <%= roster[i].position %>: <%= roster[i].name %>
                     <form action="/rosters/<%=roster[i].id%>?_method=PUT" method="POST">
                         <input type="submit" value="Drop Player" />
                     </form>
                 <% } %>
-            <% } else { %>
-                <%= roster[i].position %>: <%= roster[i].name %>
-                <form action="/rosters/<%=roster[i].id%>?_method=PUT" method="POST">
-                    <input type="submit" value="Drop Player" />
-                </form>
-            <% } %>
-        <% } %><br><br><br>
-    </div>  
-    <a href="/rosters/availablePlayers">View All Players</a><br><br>
-    <a href="/rosters/league">View League</a><br><br>
+             <% } %>
+        </table>
+    </div>
+        
+        
+
+    
 </body>
 </html>
