@@ -199,11 +199,13 @@ td {
 }
 
 ul {
+    font-size: 25px;
     padding-inline-start: 0px;
-    text-align: center;
+    text-align: justify;
     border: 3px solid #29339B;
     background-color: #0D0106;
     width: 75vw;
     margin: 0 auto;
     list-style: none;
+    padding: 5px;
 }
