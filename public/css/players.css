@@ -90,6 +90,10 @@ a {
     border: 2px solid #29339B;
 }
 
+.logout-container {
+    text-align: center;
+}
+
 #profile:hover, #rules:hover, #search:hover, #roster:hover, #league:hover, #players:hover, #logout-box:hover, #signup-box:hover, #login-box:hover {
     text-decoration: underline;
     background-color: #29339B;
@@ -184,4 +188,22 @@ td {
     text-decoration: underline;
     background-color: #29339B;
     border: 3px solid #29339B;
+}
+
+#rules-page {
+    grid-column: 2;
+    grid-row: 2;
+    text-decoration: underline;
+    background-color: #29339B;
+    border: 3px solid #29339B;
+}
+
+ul {
+    padding-inline-start: 0px;
+    text-align: center;
+    border: 3px solid #29339B;
+    background-color: #0D0106;
+    width: 75vw;
+    margin: 0 auto;
+    list-style: none;
 }

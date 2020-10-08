@@ -8,6 +8,7 @@ router.get('/search', ctrl.rosters.rendSearchPlayer);
 router.post('/filter', ctrl.rosters.filter);
 router.post('/search', ctrl.rosters.searchPlayer);
 router.get('/league', ctrl.rosters.rendLeague);
+router.get('/league/rules', ctrl.rosters.rendLeagueRules);
 router.get('/league/:index', ctrl.rosters.rendOtherTeam);
 router.put('/addPlayer/:index', ctrl.rosters.addPlayer);
 router.put('/:index', ctrl.rosters.dropPlayer);

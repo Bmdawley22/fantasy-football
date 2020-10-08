@@ -136,6 +136,10 @@ const rendLeague = (req,res) => {
     })
 }
 
+const rendLeagueRules = (req,res) => {
+    res.render('main/leagueRules.ejs')
+}
+
 const rendOtherTeam = (req, res) => {
     User.findByPk(req.params.index, {
         include: [
@@ -212,6 +216,7 @@ module.exports = {
     rendAvailablePlayers,
     filter,
     rendLeague,
+    rendLeagueRules,
     rendOtherTeam,
     dropPlayer,
     addPlayer
