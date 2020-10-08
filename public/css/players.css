@@ -6,12 +6,11 @@ body {
     color: white;
 }
 h1 {
-    background: #6A7062;
-    border: solid #29339B 5px;
-    border-radius: 5px;
+    background: #0D0106;
+    border: solid #29339B 10px;
+    border-radius: 10px;
     text-align: center;
-    font-size: 76w;
-    
+    font-size: 4vw;
     width: 40vw;
     margin: 2vh auto;
     padding: 5px;
@@ -20,9 +19,9 @@ h1 {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background: #6A7062;
-    border: solid #29339B 5px;
-    border-radius: 5px;
+    background: #0D0106;
+    border: solid #29339B 10px;
+    border-radius: 10px;
     width: 80vw;
     margin: auto;
     padding: 1vh 0;
@@ -36,7 +35,7 @@ h1 {
     height: 70vh;
     width: 80vw;
     border: 10px solid #29339B;
-    background: #6A7062;
+    background: #0D0106;
     border-radius: 10px;
     overflow: auto;
     margin: 2vh auto;
@@ -44,12 +43,11 @@ h1 {
 }
 #playerTable {
     width: 80vw;
-    background: #6A7062;
-    padding: 0px 10px 10px 10px;
+    background: #0D0106;
+    padding: 0px 5px 10px 5px;
 }
-
 th {
-    background-color: #6A7062;
+    background-color: #0D0106;
     font-size: 30px;
     color: white;
     position: sticky;
@@ -62,7 +60,7 @@ th {
 td {
     text-align: center;
     font-size: 20px;
-    height: 80%;
+    padding: 5px;
 }
 .playerInfo .name {
     width: 30%;
