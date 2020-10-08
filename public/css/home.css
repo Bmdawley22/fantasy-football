@@ -4,16 +4,18 @@ body {
     background-attachment: fixed;
     background-size: 100% 100%;
     text-align: center;
+  
 }
 
 h1 {
     color: #F2F4FF;
-    font-size: 50px;
+    font-size: 6vh;
     text-align: center;
     padding: 0px;
     display: inline-block;
     background-color: #0D0106;
-    border: 2px solid #29339B;
+    border: 5px solid #29339B;
+    border-radius: 5px;
     padding: 5px;
 }
 
@@ -23,17 +25,19 @@ a {
 }
 
 #signup-box {
-    font-size: 20px;
+    font-size: 4vh;
     padding: 10px 100px;
     background-color: #0D0106;
-    border: 2px solid #29339B;
+    border: 5px solid #29339B;
+    border-radius: 5px;
 }
 
 #login-box {
-    font-size: 20px;
+    font-size: 4vh;
     padding: 10px 100px;
     background-color: #0D0106;
-    border: 2px solid #29339B;
+    border: 5px solid #29339B;
+    border-radius: 5px;
 }
 
 input {
@@ -145,7 +149,8 @@ input {
 #profile:hover, #rules:hover, #search:hover, #roster:hover, #league:hover, #players:hover, #logout-box:hover, #signup-box:hover, #login-box:hover {
     text-decoration: underline;
     background-color: #29339B;
-    border: 3px solid #0D0106;
+    border: 5px solid #0D0106;
+    border-radius: 5px
 }
 
 #editButton {
