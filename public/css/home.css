@@ -12,7 +12,7 @@ h1 {
     text-align: center;
     padding: 0px;
     display: inline-block;
-    background-color: #6A7062;
+    background-color: #0D0106;
     border: 2px solid #29339B;
     padding: 5px;
 }
@@ -35,8 +35,8 @@ input {
 .items {
     font-size: 20px;
     color: #F2F4FF;
-    border: 2px solid #F2F4FF;
-    background-color: #29339B;
+    background-color: #0D0106;
+    border: 2px solid #29339B;
     padding-left: 5px;
     margin-right: 10px;
 }
@@ -69,7 +69,7 @@ input {
 #profile {
     grid-column: 1;
     grid-row: 1;
-    background-color: #6A7062;
+    background-color: #0D0106;
     border: 2px solid #29339B;
     padding-top: 18px;
 }
@@ -77,7 +77,7 @@ input {
 #roster {
     grid-column: 2;
     grid-row: 1;
-    background-color: #6A7062;
+    background-color: #0D0106;
     border: 2px solid #29339B;
     padding-top: 18px;
 }
@@ -85,7 +85,7 @@ input {
 #league {
     grid-column: 1;
     grid-row: 2;
-    background-color: #6A7062;
+    background-color: #0D0106;
     border: 2px solid #29339B;
     padding-top: 18px;
 }
@@ -93,7 +93,7 @@ input {
 #players {
     grid-column: 2;
     grid-row: 2;
-    background-color: #6A7062;
+    background-color: #0D0106;
     border: 2px solid #29339B;
     padding-top: 18px;
 }
@@ -117,20 +117,20 @@ input {
 #signup-box {
     font-size: 20px;
     padding: 10px 100px;
-    background-color: #6A7062;
+    background-color: #0D0106;
     border: 2px solid #29339B;
 }
 
 #login-box {
     font-size: 20px;
     padding: 10px 100px;
-    background-color: #6A7062;
+    background-color: #0D0106;
     border: 2px solid #29339B;
 }
 #logout-box {
     font-size: 20px;
     padding: 10px 100px;
-    background-color: #6A7062;
+    background-color: #0D0106;
     border: 2px solid #29339B;
 }
 
@@ -140,6 +140,6 @@ input {
 
 #profile:hover, #roster:hover, #league:hover, #players:hover, #logout-box:hover, #signup-box:hover, #login-box:hover {
     text-decoration: underline;
-    background-color: black;
+    background-color: #29339B;
     border: 3px solid #29339B;
 }
