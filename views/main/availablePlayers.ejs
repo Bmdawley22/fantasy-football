@@ -8,21 +8,29 @@
 </head>
 <body>
     <h1>Filter Available Players</h1>
+    <div class="nav-container">
+        <div class='container-items' id='profile'><a class='container-item' id='profile-box' href="/users/profile">Your Profile</a></div>
+        <div class='container-items' id='roster'><a class='container-item' id='roster-box' href="/rosters">Your Roster</a></div>
+        <div class='container-items' id='league'><a class='container-item' id='league-box' href="/rosters/league">Your League</a></div>
+        <div class='container-items' id='players'><a class='container-item' id='players-box' href="/rosters/availablePlayers">Filter Players</a></div>
+        <div class='container-items' id='search'><a class='container-item' id='players-box' href="/rosters/search">Search Players</a></div>
+        <div class='container-items' id='rules'><a class='container-item' id='players-box' href="/rosters/league/rules">League Rules</a></div>
+    </div><br>
     <div id="filterBar">
         <form id="filterButtons" action="/rosters/filter" method="POST">
-            <p>Filter by Position</p> <select id="posSelect" name="position" >
+            <span>Filter by Position</span> <select id="posSelect" name="position" >
                 <option value="<%=currentPos%>"><%=currentPos%></option>
                 <% for (let i=0; i < positions.length; i++) { %>
                     <option value="<%= positions[i] %>"><%= positions[i] %></option>
                 <% } %>
             </select>
-            <p>Filter by Team</p> <select name="teams">
+            <span>Filter by Team</span> <select name="teams">
             <option value="<%=currTeam%>"><%=currTeam%></option>
                 <% for (let i=0; i < teams.length; i++) { %> 
                     <option value="<%= teams[i] %>"><%= teams[i] %></option>
                 <% } %>
             </select>
-            <input type="submit" value="Filter">
+            <input id="searchButton" type="submit" value="Filter">
         </form>
     </div>
         
@@ -41,7 +49,7 @@
                         <td class="pos"><%= player[i].position %></td>
                         <td class="team"><%= player[i].team %></td>
                         <form action="/rosters/addPlayer/<%=player[i].id%>?_method=PUT" method="POST">
-                            <td class="addPlayer"><input  type="submit" value="Add Player" /></td>
+                            <td class="addPlayer"><input id="addButton" type="submit" value="Add Player" /></td>
                         </form>
                     </tr>
                 <% } %>
