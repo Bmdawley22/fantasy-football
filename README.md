@@ -2,8 +2,7 @@
 1. Title: Fantasy Football
 
 2. Description: 
-    1. This project consisted of creating an app with full CRUD functionality. For this project, Brady and I chose to make a fantasy football app.
-    Click the following link to get started on how to play. [Fantasy-Football-Rules](https://fantasy-football-lucas.herokuapp.com/rosters/league/rules) The basic premise behind the app is to create and sign into your profile. From there, you have joined the single league we have created and you can begin building your team. First, directly after you create your user, you can see youre in the profile of the nav bar. Clicking on "Your Roster" will bring you to your roster's page. You can then click on "Your League" to view other rosters in the league. If you would like to add players to your roster, click on "Filter Players" to go to a page where you can search players by their position and/or team or click on "Search Players" if you know the name of the player you'd like to add. 
+    1. This project consisted of creating an app with full CRUD functionality. For this project, Brady and I chose to make a fantasy football app. Click the following link to get started on how to play. [Fantasy-Football-Rules](https://fantasy-football-lucas.herokuapp.com/rosters/league/rules) The basic premise behind the app is to create and sign into your profile. From there, you have joined the single league we have created and you can begin building your team. First, directly after you create your user, you can see youre in the profile of the nav bar. Clicking on "Your Roster" will bring you to your roster's page. You can then click on "Your League" to view other rosters in the league. If you would like to add players to your roster, click on "Filter Players" to go to a page where you can search players by their position and/or team or click on "Search Players" if you know the name of the player you'd like to add. 
 
 3. User Stories:
     1. As an unregistered user, I want to be able to sign up with a username and password so that I can join the fantasy football league.
@@ -36,6 +35,8 @@
     1. Integrating a Player's Stats Model to show new users who was good the previous season
 
 5. Unsolved Problems:
+    1. Didnt have time to do proper error handling. Error stays on page until you correctly redo the action that caused the error.
+    1. Didnt get csv file seeded into the deployed version, so none of the players show up.
 
 6. List of Technologies Used:
     1. Command Line: Used to navigate file system and organize file structure.
