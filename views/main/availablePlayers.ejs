@@ -11,7 +11,7 @@
     <div class="nav-container">
         <div class='container-items' id='profile'><a class='container-item' id='profile-box' href="/users/profile">Your Profile</a></div>
         <div class='container-items' id='roster'><a class='container-item' id='roster-box' href="/rosters">Your Roster</a></div>
-        <div class='container-items' id='league'><a class='container-item' id='league-box' href="/rosters/league">Your League</a></div>
+        <div class='container-items' id='league'><a class='container-item' id='league-box' href="/rosters/league">League</a></div>
         <div class='container-items' id='players-page'><a class='container-item' id='players-box'>Filter Players</a></div>
         <div class='container-items' id='search'><a class='container-item' id='players-box' href="/rosters/search">Search Players</a></div>
         <div class='container-items' id='rules'><a class='container-item' id='players-box' href="/rosters/league/rules">League Rules</a></div>
@@ -43,7 +43,7 @@
                 <th>Add Players</th>
             </tr>
             <% for(let i = 0; i < player.length; i++) { %>
-                <% if(player[i].roster_id == null || player[i].roster_id == 0) { %>
+                <% if(player[i].userId == null || player[i].userId == 0) { %>
                     <tr class="playerInfo">
                         <td class="name"><%= player[i].name %></td>
                         <td class="pos"><%= player[i].position %></td>

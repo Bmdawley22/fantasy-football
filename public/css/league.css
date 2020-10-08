@@ -1,76 +1,20 @@
 body {
     background-image: url("https://i.pinimg.com/originals/f6/ea/00/f6ea000fea4f2e267ffe7ad0d1bc474c.jpg");
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: fixed;    
     background-size: 100% 100%;
-    text-align: center;
+    color: white;
 }
-
 h1 {
-    color: #F2F4FF;
-    font-size: 50px;
+    background: #0D0106;
+    border: solid #29339B 5px;
+    border-radius: 5px;
     text-align: center;
-    padding: 0px;
-    display: inline-block;
-    background-color: #0D0106;
-    border: 2px solid #29339B;
+    font-size: 3vw;
+    width: 40vw;
+    margin: 2vh auto;
     padding: 5px;
 }
-
-a {
-    color: #F2F4FF;
-    text-decoration: none;
-}
-
-#signup-box {
-    font-size: 20px;
-    padding: 10px 100px;
-    background-color: #0D0106;
-    border: 2px solid #29339B;
-}
-
-#login-box {
-    font-size: 20px;
-    padding: 10px 100px;
-    background-color: #0D0106;
-    border: 2px solid #29339B;
-}
-
-input {
-    border: 2px solid black;
-    border-radius: 5px;
-}
-
-.input {
-    font-size: 20px;
-}
-
-.items {
-    font-size: 20px;
-    color: #F2F4FF;
-    background-color: #0D0106;
-    border: 2px solid #29339B;
-    padding-left: 5px;
-    margin-right: 10px;
-}
-
-.name {
-    padding-right: 50px;
-    margin-bottom: -2px;
-}
-
-.teamName {
-    padding-right: 1px;
-}
-
-.username {
-    padding-right: 17px;
-}
-
-.password {
-    padding-right: 21px;
-}
-
 .nav-container {
     display: grid;
     grid-template-columns: 25vw 25vw 25vw;
@@ -80,9 +24,13 @@ input {
     height: 12vh;
     width: 75vw;
     margin: 0 auto;
-    border: 2px solid #29339B;
+    border: 5px solid #29339B;
+    border-radius: 5px;
 }
-
+a {
+    color: #F2F4FF;
+    text-decoration: none;
+}
 .container-items {
     display: flex;
     justify-content: center;
@@ -147,28 +95,38 @@ input {
     background-color: #29339B;
     border: 3px solid #0D0106;
 }
-
-#editButton {
-    font-size: 18px;
+#teamScroll {
+    width: 75vw;
+    border: 5px solid #29339B;
+    border-radius: 5px;
+    background: #0D0106;
+    overflow: auto;
+    margin: 2vh auto;
+    scroll-padding: 10px;
 }
-
-#profile-page {
-    grid-column: 1;
-    grid-row: 1;
-    text-decoration: underline;
-    background-color: #29339B;
-    border: 3px solid #29339B;
+#teamTable {
+    width: 75vw;
+    background: #0D0106;
+    padding: 5px 5px 10px 5px;
+    border-spacing: 0px;
 }
-
-.button-hover {
-    background-color: #29339B;
-    border: solid #29339B 3px;
-    border-radius: 3px;
+th {
+    background-color: #0D0106;
+    font-size: 2.25vw;
     color: white;
+    position: sticky;
+    top: 0;
+    border-bottom: 5px solid #29339B;
+}
+td {
+    text-align: center;
+    font-size: 1.75vw;
+    padding: 10px;
 }
 
-.button-hover:hover {
-    background-color: white;
-    border: solid white 3px;
-    color: #29339B;
+.playerInfo a {
+    text-decoration: underline;
+}
+.playerInfo a:hover {
+    color: blue;
 }
