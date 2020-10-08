@@ -116,11 +116,15 @@ a {
     display: flex;
     justify-content: space-evenly;
 }
+form span {
+    margin: auto 15px;
+}
 #searchButton {
     background-color: #29339B;
     border: solid #29339B 3px;
     border-radius: 3px;
     color: white;
+    margin-left: 15px;
 }
 #playerScroll {
     height: 60vh;
