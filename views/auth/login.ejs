@@ -14,5 +14,8 @@
         <span class="password items">Password: </span><input class="input" type="text" name="password" placeholder="Password" /><br><br>
         <input id="editButton" type="submit" name="" value="Login" />
     </form>
+    <% if (error) { %>
+        <h3>Invalid credentials</h3>
+    <% } %>
 </body>
 </html>

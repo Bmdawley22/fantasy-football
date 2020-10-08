@@ -16,5 +16,9 @@
         <span class="password items">Password: </span><input class="input" type="text" name="password" placeholder="Password" /><br><br>
         <input id="editButton" type="submit" name="" value="Sign Up" />
     </form>
+    <% if (error) { %>
+        <h3>Username Taken</h3>
+    <% } %>
+
 </body>
 </html>

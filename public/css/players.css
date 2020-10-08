@@ -15,6 +15,12 @@ h1 {
     margin: 2vh auto;
     padding: 5px;
 }
+#error {
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: red;
+    margin-left: 2vw;
+}
 .nav-container {
     display: grid;
     grid-template-columns: 25vw 25vw 25vw;

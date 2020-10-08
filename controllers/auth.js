@@ -6,10 +6,14 @@ const User = require('../models').Users;
 
 
 const rendSignup = (req,res) => {
-    res.render('auth/signup.ejs')
+    res.render('auth/signup.ejs', {
+        error: true
+    })
 }
 const rendLogin = (req,res) => {
-    res.render('auth/login.ejs')
+    res.render('auth/login.ejs', {
+        error: false
+    })
 }
 
 const signup = (req, res) => {
@@ -42,6 +46,12 @@ const signup = (req, res) => {
                 res.cookie('jwt', token);
                 res.redirect(`/users/profile`);
             })
+            .catch(() => {
+                res.render('auth/signup.ejs', {
+                    error: true
+                })
+            })
+            
     //     })
     // })
 }
@@ -71,7 +81,9 @@ const login = (req, res) => {
                     res.cookie('jwt', token);
                     res.redirect(`/users/profile`);
                 } else {
-                    res.send('Incorrect Password');
+                    res.render('auth/login.ejs', {
+                        error: true
+                    })
                 }
             // })
     //     }

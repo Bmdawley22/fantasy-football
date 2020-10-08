@@ -31,6 +31,9 @@
                 <% } %>
             </select>
             <input id="searchButton" type="submit" value="Filter">
+            <% if (error) { %>
+                <span id="error">Invalid Add Player</span>
+            <% } %>
         </form>
     </div>
         

@@ -7,7 +7,7 @@ let filterPosition = 'All';
 let filterTeam = 'All';
 let positionArr = ['All','QB', 'RB','WR','TE','DST','k'];
 let teamArr = ["All", "ARI", "ATL",	"BAL", "BUF", "CAR", "CHI",	"CIN", "CLE", "DAL", "DEN",	"DET", "GNB", "HOU", "IND",	"JAX", "KAN", "LAC", "LAR",	"LVR", "MIA", "MIN", "NOR",	"NWE", "NYG", "NYJ", "PHI",	"PIT", "SEA", "SFO", "TAM",	"TEN", "WAS"];
-
+let error = false;
 
 const rendSearchPlayer = (req, res) => {
     Player.findAll(
@@ -76,7 +76,8 @@ const rendAvailablePlayers = (req,res) => {
                 positions: positionArr,
                 teams: teamArr,
                 currentPos: filterPosition,
-                currTeam: filterTeam
+                currTeam: filterTeam,
+                error: error
             })
         })
     } else if (filterPosition !== "All" && filterTeam === "All") {
@@ -90,7 +91,8 @@ const rendAvailablePlayers = (req,res) => {
                 positions: positionArr,
                 teams: teamArr,
                 currentPos: filterPosition,
-                currTeam: filterTeam
+                currTeam: filterTeam,
+                error: error
             })
         })
     }
@@ -105,7 +107,8 @@ const rendAvailablePlayers = (req,res) => {
                 positions: positionArr,
                 teams: teamArr,
                 currentPos: filterPosition,
-                currTeam: filterTeam
+                currTeam: filterTeam,
+                error: error
             })
         })
     } else if (filterPosition !== "All" && filterTeam !== "All") {
@@ -120,7 +123,8 @@ const rendAvailablePlayers = (req,res) => {
                 positions: positionArr,
                 teams: teamArr,
                 currentPos: filterPosition,
-                currTeam: filterTeam
+                currTeam: filterTeam,
+                error: error
             })
         })
     } 
@@ -200,10 +204,12 @@ const addPlayer = (req, res) => {
                     {where: {id: req.params.index}},
                     {attributes: ['id', 'name', 'position', 'team', 'age', 'userId']}
                 ).then(() => {
+                    error = false;
                     res.redirect('/rosters')
                 })
             } else {
-                res.send('Cannot add this player');
+                error = true;
+                res.redirect('/rosters/availablePlayers')
             }
         })
     })
