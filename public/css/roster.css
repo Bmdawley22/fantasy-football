@@ -20,7 +20,7 @@ h1 {
     grid-template-columns: 25vw 25vw 25vw;
     grid-template-rows: 6vh 6vh;
     justify-content: center;
-    font-size: 20px;
+    font-size: 2vw;
     height: 12vh;
     width: 75vw;
     margin: 0 auto;
@@ -35,7 +35,6 @@ a {
     display: flex;
     justify-content: center;
     align-content: center;
-    margin: -1px;
 }
 
 .container-item {
@@ -96,31 +95,9 @@ a {
     background-color: #29339B;
     border: 3px solid #0D0106;
 }
-#filterBar {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background: #0D0106;
-    border: 5px solid #29339B;
-    border-radius: 5px;
-    width: 75vw;
-    margin: auto;
-    padding: 1.5vh 0;
-}
-#filterBar #filterButtons {
-    width: 53vw;
-    display: flex;
-    justify-content: space-evenly;
-    
-}
-#searchButton {
-    background-color: #29339B;
-    border: solid #29339B 3px;
-    border-radius: 3px;
-    color: white;
-}
+
 #playerScroll {
-    height: 60vh;
+    height: 65vh;
     width: 75vw;
     border: 5px solid #29339B;
     border-radius: 5px;
@@ -137,7 +114,7 @@ a {
 }
 th {
     background-color: #0D0106;
-    font-size: 35px;
+    font-size: 2.25vw;
     color: white;
     position: sticky;
     top: 0;
@@ -148,10 +125,32 @@ th {
 }
 td {
     text-align: center;
-    font-size: 25px;
+    font-size: 1.75vw;
     padding: 10px;
 }
 .playerInfo .name {
     width: 40%;
 }
+.playerInfo form {
+    display: flex;
+    align-content: center;
+}
 
+.dropPlayer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.dropPlayer input{
+    background-color: #29339B;
+    border: solid #29339B 3px;
+    border-radius: 3px;
+    color: white;
+    font: 20px;
+    width: 80%;
+}
+#dropButton:hover {
+    background-color: white;
+    border: solid white 3px;
+    color: #29339B;
+}

@@ -22,27 +22,36 @@
                 <th class="name">Player</th>
                 <th class="pos">Position</th>
                 <th class="team">Team</th>
-                <th></th>
+                <th>Drop Player</th>
             </tr>
             <% for(let i = 0; i < roster.length; i++) { %>
-                <% if(flex) { %>
-                    <% if(i == sum) { %>
-                        FLEX: <%= roster[i].name %><br>
-                        <form action="/rosters/<%=roster[i].id%>?_method=PUT" method="POST">
-                            <input type="submit" value="Drop Player" />
-                        </form>
-                    <% } else { %>
-                        <%= roster[i].position %>: <%= roster[i].name %><br>
-                        <form action="/rosters/<%=roster[i].id%>?_method=PUT" method="POST">
-                            <input type="submit" value="Drop Player" />
-                        </form>
-                    <% } %>
+                <tr class="playerInfo">
+                    <% if(flex) { %>
+                        <% if(i == sum) { %>
+                            <td class="name"><%= roster[i].name %></td>
+                            <td class="pos">FLEX</td>
+                            <td class="team"><%= roster[i].team %></td>
+                            <form action="/rosters/<%=roster[i].id%>?_method=PUT" method="POST">
+                                <td class="dropPlayer"><input id="dropButton" type="submit" value="Drop Player" /></td>
+                            </form>
+                        <% } else { %>
+                            <td class="name"><%= roster[i].name %></td>
+                            <td class="pos"><%= roster[i].position %></td>
+                            <td class="team"><%= roster[i].team %></td>
+                            <form action="/rosters/<%=roster[i].id%>?_method=PUT" method="POST">
+                                <td class="dropPlayer"><input id="dropButton" type="submit" value="Drop Player" /></td>
+                            </form>
+                        <% } %>
                 <% } else { %>
-                    <%= roster[i].position %>: <%= roster[i].name %>
+                    <td class="name"><%= roster[i].name %></td>
+                    <td class="pos"><%= roster[i].position %></td>
+                    <td class="team"><%= roster[i].team %></td>
                     <form action="/rosters/<%=roster[i].id%>?_method=PUT" method="POST">
-                        <input type="submit" value="Drop Player" />
+                        <td class="dropPlayer"><input id="dropButton" type="submit" value="Drop Player" /></td>
                     </form>
                 <% } %>
+                </tr>
+                
              <% } %>
         </table>
     </div>
