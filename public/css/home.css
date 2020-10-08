@@ -20,7 +20,20 @@ h1 {
 a {
     color: #F2F4FF;
     text-decoration: none;
-    margin: 0px 10px;
+}
+
+#signup-box {
+    font-size: 20px;
+    padding: 10px 100px;
+    background-color: #0D0106;
+    border: 2px solid #29339B;
+}
+
+#login-box {
+    font-size: 20px;
+    padding: 10px 100px;
+    background-color: #0D0106;
+    border: 2px solid #29339B;
 }
 
 input {
@@ -60,10 +73,24 @@ input {
 
 .nav-container {
     display: grid;
-    grid-template-columns: 250px 250px;
-    grid-template-rows: 60px 60px;
+    grid-template-columns: 25vw 25vw 25vw;
+    grid-template-rows: 10vh 10vh;
     justify-content: center;
     font-size: 20px;
+    height: 20vh;
+    width: 75vw;
+    margin: 0 auto;
+    border: 2px solid #29339B;
+}
+
+.container-items {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.container-item {
+    margin: auto;
 }
 
 #profile {
@@ -71,62 +98,43 @@ input {
     grid-row: 1;
     background-color: #0D0106;
     border: 2px solid #29339B;
-    padding-top: 18px;
 }
 
 #roster {
-    grid-column: 2;
-    grid-row: 1;
-    background-color: #0D0106;
-    border: 2px solid #29339B;
-    padding-top: 18px;
-}
-
-#league {
     grid-column: 1;
     grid-row: 2;
     background-color: #0D0106;
     border: 2px solid #29339B;
-    padding-top: 18px;
+}
+
+#league {
+    grid-column: 2;
+    grid-row: 1;
+    background-color: #0D0106;
+    border: 2px solid #29339B;
 }
 
 #players {
+    grid-column: 3;
+    grid-row: 1;
+    background-color: #0D0106;
+    border: 2px solid #29339B;
+}
+
+#search {
+    grid-column: 3;
+    grid-row: 2;
+    background-color: #0D0106;
+    border: 2px solid #29339B;
+}
+
+#rules {
     grid-column: 2;
     grid-row: 2;
     background-color: #0D0106;
     border: 2px solid #29339B;
-    padding-top: 18px;
 }
 
-#profile-box {
-    padding: 18px 63px 16px 63px; 
-}
-
-#roster-box {
-    padding: 18px 63px 16px 63px; 
-}
-
-#league-box {
-    padding: 18px 60px 16px 60px; 
-}
-
-#players-box {
-    padding: 18px 27px 16px 27px; 
-} 
-
-#signup-box {
-    font-size: 20px;
-    padding: 10px 100px;
-    background-color: #0D0106;
-    border: 2px solid #29339B;
-}
-
-#login-box {
-    font-size: 20px;
-    padding: 10px 100px;
-    background-color: #0D0106;
-    border: 2px solid #29339B;
-}
 #logout-box {
     font-size: 20px;
     padding: 10px 100px;
@@ -134,12 +142,12 @@ input {
     border: 2px solid #29339B;
 }
 
-#editButton {
-    font-size: 18px;
-}
-
-#profile:hover, #roster:hover, #league:hover, #players:hover, #logout-box:hover, #signup-box:hover, #login-box:hover {
+#profile:hover, #rules:hover, #search:hover, #roster:hover, #league:hover, #players:hover, #logout-box:hover, #signup-box:hover, #login-box:hover {
     text-decoration: underline;
     background-color: #29339B;
     border: 3px solid #29339B;
+}
+
+#editButton {
+    font-size: 18px;
 }
