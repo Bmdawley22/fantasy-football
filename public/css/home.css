@@ -145,9 +145,17 @@ input {
 #profile:hover, #rules:hover, #search:hover, #roster:hover, #league:hover, #players:hover, #logout-box:hover, #signup-box:hover, #login-box:hover {
     text-decoration: underline;
     background-color: #29339B;
-    border: 3px solid #29339B;
+    border: 3px solid #0D0106;
 }
 
 #editButton {
     font-size: 18px;
+}
+
+#profile-page {
+    grid-column: 1;
+    grid-row: 1;
+    text-decoration: underline;
+    background-color: #29339B;
+    border: 3px solid #29339B;
 }
