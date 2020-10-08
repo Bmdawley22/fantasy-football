@@ -153,3 +153,15 @@ td {
     border: solid white 3px;
     color: #29339B;
 }
+
+.logout-container {
+    text-align: center;
+}
+
+#roster-page {
+    grid-column: 1;
+    grid-row: 2;
+    text-decoration: underline;
+    background-color: #29339B;
+    border: 3px solid #29339B;
+}
