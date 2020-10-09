@@ -29,8 +29,6 @@ const signup = (req, res) => {
                         expiresIn: '30 days'
                     }
                 );
-                // console.log(newUser);
-                // console.log(token);
                 res.cookie('jwt', token);
                 res.redirect(`/users/profile`);
             })
@@ -39,9 +37,6 @@ const signup = (req, res) => {
                     error: true
                 })
             })
-            
-    //     })
-    // })
 }
 
 const login = (req, res) => {
@@ -54,8 +49,6 @@ const login = (req, res) => {
     .then(foundUser => {
 
         if(foundUser) {
-            // bcrypt.compare(req.body.password, foundUser.password, (err, match) => {
-            //     if(match) {
                     const token = jwt.sign(
                         {
                             id: foundUser.id,
@@ -73,8 +66,6 @@ const login = (req, res) => {
                         error: true
                     })
                 }
-            // })
-    //     }
      })
 }
 

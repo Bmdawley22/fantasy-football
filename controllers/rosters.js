@@ -22,7 +22,9 @@ const rendSearchPlayer = (req, res) => {
 }
 
 const searchPlayer = (req, res) => {
+    //gets user input
     let inputPlayer = `${req.body.name}`;
+    //handles capitalization matching
     string = stringHandler(inputPlayer)
     Player.findAll(
         { where: { "name": { [Op.like]: `%${string}%` }},
@@ -37,6 +39,8 @@ const searchPlayer = (req, res) => {
 }
 
 const rendRoster = (req,res) => {
+    //finds current user from web token
+    //includes players where association exists
     User.findByPk(req.user.id, {
         include: [{
             model: Player,
@@ -44,12 +48,18 @@ const rendRoster = (req,res) => {
         }]
     })
     .then(user => {
+        //function that returns the roster in the desired ordered 
         orderedRoster = orderRoster(user, true);
+        //function to compare if added player can be added without violating 
+        //roster postion requirements
+        //passes in count array and added player information
         countArray = orderRoster(user, false);
         let flex = false
+        //checks if flex position is present (to change the display on the roster)
         if(countArray[4] == 1) {
             flex = true;
         }
+        //determines whne the flex position should be displayed (instead of rb, wr, or te)
         let sum = countArray[0] + countArray[1] + countArray[2] + countArray[3];
         res.render('main/roster.ejs', {
             user: user,
@@ -61,11 +71,13 @@ const rendRoster = (req,res) => {
     }) 
 }
 const filter = (req, res) => {
+    //set equal to filter input from user
     filterPosition = req.body.position;
     filterTeam = req.body.teams;
     res.redirect('/rosters/availablePlayers');
 }
 const rendAvailablePlayers = (req,res) => {
+    //checks if filter input is set to all for position and teams
     if (filterPosition === "All" && filterTeam === "All") {
         Player.findAll(
            { attributes: ['id', 'name', 'position', 'team', 'age', 'userId'] }    
@@ -80,6 +92,7 @@ const rendAvailablePlayers = (req,res) => {
                 error: error
             })
         })
+        //checks if just a position is filtered
     } else if (filterPosition !== "All" && filterTeam === "All") {
         Player.findAll(
             { where: { "position": filterPosition },
@@ -96,6 +109,7 @@ const rendAvailablePlayers = (req,res) => {
             })
         })
     }
+        //checks if just a team is filtered
     else if (filterPosition === "All" && filterTeam !== "All") {
         Player.findAll(
             { where: { "team": filterTeam },
@@ -111,6 +125,7 @@ const rendAvailablePlayers = (req,res) => {
                 error: error
             })
         })
+        //check if both are filtered
     } else if (filterPosition !== "All" && filterTeam !== "All") {
         Player.findAll(
             { where: { "team": filterTeam,
@@ -145,6 +160,8 @@ const rendLeagueRules = (req,res) => {
 }
 
 const rendOtherTeam = (req, res) => {
+    //finds current user from web token
+    //includes players where association exists
     User.findByPk(req.params.index, {
         include: [
             {
@@ -154,12 +171,18 @@ const rendOtherTeam = (req, res) => {
         ]
     })
     .then(otherTeam => {
+        //function that returns the roster in the desired ordered 
         orderedRoster = orderRoster(otherTeam, true);
+        //function to compare if added player can be added without violating 
+        //roster postion requirements
+        //passes in count array and added player information
         countArray = orderRoster(otherTeam, false);
         let flex = false
+        //checks if flex position is present (to change the display on the roster)
         if(countArray[4] == 1) {
             flex = true;
         }
+        //determines whne the flex position should be displayed (instead of rb, wr, or te)
         let sum = countArray[0] + countArray[1] + countArray[2] + countArray[3];
         res.render('main/otherTeam.ejs', {
             team: otherTeam,
@@ -182,6 +205,7 @@ const dropPlayer = (req, res) => {
 }
 
 const addPlayer = (req, res) => {
+    //finding logged in user from web token, including player model
     User.findOne({
         include: [
             {
@@ -192,13 +216,19 @@ const addPlayer = (req, res) => {
         where: { id: req.user.id }
     })
     .then(foundUser => {
+        //finding player from database by selected "add player" button
         Player.findByPk(req.params.index, {
             attributes: ['position']
         })
-        .then(foundPlayer => {         
+        .then(foundPlayer => {    
+            //function that returns an array of counts for each position in the current user's roster
             countArray = orderRoster(foundUser, false);
+            //function to compare if added player can be added without violating 
+            //roster postion requirements
+            //passes in count array and added player information
             compareNewPlayer = comparePlayer(countArray, foundPlayer);
             if(compareNewPlayer) {
+                //adds foreign key to added player 
                 Player.update(
                     {userId: foundUser.id},
                     {where: {id: req.params.index}},
@@ -227,31 +257,36 @@ module.exports = {
     dropPlayer,
     addPlayer
 }
-
+//function to see if added player meets postion requirements to be added to roster
+//returns true if able to be added, false otherwise
 function comparePlayer(arr, player) {
-    const rosterArray = arr;
+    //array of counts for each position
+    const countArray = arr;
+    //added player to be checked
     const playerPosition = player.position;
 
-    if(playerPosition === 'QB' && rosterArray[0] < 1) {
+    if(playerPosition === 'QB' && countArray[0] < 1) {
         return true;
-    } else if(playerPosition === 'RB' && rosterArray[1] < 2) {
+    } else if(playerPosition === 'RB' && countArray[1] < 2) {
         return true;
-    } else if(playerPosition === 'WR' && rosterArray[2] < 2) {
+    } else if(playerPosition === 'WR' && countArray[2] < 2) {
         return true;
-    } else if(playerPosition === 'TE' && rosterArray[3] < 1) {
+    } else if(playerPosition === 'TE' && countArray[3] < 1) {
         return true;
-    } else if(rosterArray[4] < 1 && 
+    } else if(countArray[4] < 1 && 
         (playerPosition === 'RB' || playerPosition === 'WR' || playerPosition === 'TE')) {
         return true;
-    } else if(playerPosition === 'DST' && rosterArray[5] < 1) {
+    } else if(playerPosition === 'DST' && countArray[5] < 1) {
         return true;
-    } else if(playerPosition === 'k' && rosterArray[6] < 1) {
+    } else if(playerPosition === 'k' && countArray[6] < 1) {
         return true;
     } else {
         return false;
     }
 }
-
+//function to both order the roster to the desired format and count number of each 
+//position on roster
+//if false passed in, function returns count array, if true = passes ordered roster array
 function orderRoster(user, truthOrFalse) {
     const rosterArray = [];
     let qbCount = 0;
@@ -326,35 +361,43 @@ function orderRoster(user, truthOrFalse) {
                 kCount++;
         }
     }
+    //sets count array 
     const countArray = [qbCount, rbCount, wrCount, teCount, flexCount, dstCount, kCount];
+    //if statement to determine whether to return roster array or count array
     if(truthOrFalse == true) {
         return rosterArray
     } else {
         return countArray
     }
 }
-
+//function for comparing searched player
 function stringHandler(input) {
     let temp = '';
     let temp2 = '';
     let string = '';
+    //for loop through inputted string 
     for(let i = 0; i < input.length; i++) {
+        //changes first character to uppercase
         if(i == 0) {
             temp = input.substring(0,1).toUpperCase();
         } else {
+            //capitalizes first letter of last name
             if(input[i] == ' ' && i != (input.length-1)) {
                 temp = ' ';
                 temp2 = input.substring(i+1,i+2).toUpperCase();
             }
+            //lowercases every character but 1st letter of last name
             else if (input[i-1] != ' ') {
                 temp = input.substring(i,i+1).toLowerCase();
                 temp2 = '';
             }
+            //sets to empty if for loop is on 1st character of last name
             else {
                 temp = '';
                 temp2 = '';
             }
         }
+        //stores search string
         string = string + temp + temp2;
     }
     return string

@@ -10,7 +10,6 @@ const rendProfile = (req, res) => {
     .then(showProfile => {
         res.render("users/profile.ejs", {
             users: showProfile
-            // index: req.params.index
         });
     }) 
 };
@@ -23,11 +22,9 @@ const edit = (req, res) => {
     .then(updatedUser => {
         res.redirect(`/users/profile`);
     })
-    // users[req.params.index] = req.body;
 }
 
 const deleteUser = (req, res) => {
-    // users.splice(req.params.index, 1);
     User.destroy({ where: { id: req.user.id } })
     .then(() => {
         res.redirect("/");
