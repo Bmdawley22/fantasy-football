@@ -24,6 +24,10 @@
                 <th class="team">Team</th>
                 <th>Drop Player</th>
             </tr>
+            <% if (roster.length < 1) { %>
+                <tr><td>Roster empty: <a id="addPlayerLink" href="/rosters/availablePlayers">add players</a></td></tr>
+            <% } %>
+                
             <% for(let i = 0; i < roster.length; i++) { %>
                 <tr class="playerInfo">
                     <% if(flex) { %>

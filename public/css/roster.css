@@ -166,3 +166,10 @@ td {
     background-color: #29339B;
     border: 3px solid #29339B;
 }
+#addPlayerLink {
+    text-decoration: underline;
+    color: #29339B;
+}
+#addPlayerLink:hover {
+    color: white;
+}
