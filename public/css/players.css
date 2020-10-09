@@ -217,5 +217,8 @@ ul {
     width: 75vw;
     margin: 0 auto;
     list-style: none;
-    padding: 5px;
+    
+}
+ul li {
+    margin: 2vh 2vw;
 }

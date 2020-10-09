@@ -24,8 +24,13 @@ h3 {
     border: 5px solid #29339B;
     border-radius: 5px;
     padding: 5px;
-    width: 12vw;
+    width: 14vw;
     margin: 20px auto;
+}
+#homeButton:hover {
+    color: white;
+    background-color: #29339B;
+    border: 5px solid #0D0106;
 }
 a {
     color: #F2F4FF;
