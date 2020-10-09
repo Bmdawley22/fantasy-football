@@ -15,13 +15,26 @@
         <div class='container-items' id='players'><a class='container-item' id='players-box' href="/rosters/availablePlayers">Filter Players</a></div>
         <div class='container-items' id='search'><a class='container-item' id='players-box' href="/rosters/search">Search Players</a></div>
         <div class='container-items' id='rules'><a class='container-item' id='players-box' href="/rosters/league/rules">League Rules</a></div>
-    </div><br>
-    <% for(let i = 0; i < user.length; i++) { %>
-        <%= user[i].name %> <a href=/rosters/league/<%= user[i].id %> ><%= user[i].teamName %></a><br>
-    <% } %>
-    <br><br><br>
-    <div class="logout-container">
-        <div ><a class='container-item' id='logout-box' href="/">Log Out</a></div>
     </div>
+    <div id="teamScroll">
+        <table id="teamTable">
+            <tr id="teamHeader">
+                <th class="id"></th>
+                <th class="teamName">Team</th>
+                <th class="name">Name</th>
+            </tr>
+            <% for(let i = 0; i < user.length; i++) { %>
+                <tr class="playerInfo">
+                    <td><%= i + 1 %></td>
+                    <td><a href="/rosters/league/<%= user[i].id %>" ><%= user[i].teamName %></a> </td>
+                    <td><%= user[i].name %></td>
+                </tr>
+            <% } %>
+           </table>
+    </div>
+    <div class="logout-container">
+        <a class='container-item' id='logout-box' href="/">Log Out</a>
+    </div>
+        
 </body>
 </html>

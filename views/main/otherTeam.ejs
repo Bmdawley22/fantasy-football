@@ -18,31 +18,31 @@
     </div><br>
     <div id="playerScroll">
         <table id="playerTable">
-        <tr id="playerHeader">
-            <th class="name">Player</th>
-            <th class="pos">Position</th>
-            <th class="team">Team</th>
-        </tr>
-        <% for(let i = 0; i < roster.length; i++) { %>
-            <tr class="playerInfo">
-                <% if(flex) { %>
-                    <% if(i == sum) { %>
-                        <td class="name"><%= roster[i].name %></td>
-                        <td class="pos">FLEX</td>
-                        <td class="team"><%= roster[i].team %></td>
+            <tr id="playerHeader">
+                <th class="name">Player</th>
+                <th class="pos">Position</th>
+                <th class="team">Team</th>
+            </tr>
+            <% for(let i = 0; i < roster.length; i++) { %>
+                <tr class="playerInfo">
+                    <% if(flex) { %>
+                        <% if(i == sum) { %>
+                            <td class="name"><%= roster[i].name %></td>
+                            <td class="pos">FLEX</td>
+                            <td class="team"><%= roster[i].team %></td>
+                        <% } else { %>
+                            <td class="name"><%= roster[i].name %></td>
+                            <td class="pos"><%= roster[i].position %></td>
+                            <td class="team"><%= roster[i].team %></td>
+                        <% } %>
                     <% } else { %>
                         <td class="name"><%= roster[i].name %></td>
                         <td class="pos"><%= roster[i].position %></td>
                         <td class="team"><%= roster[i].team %></td>
                     <% } %>
-                <% } else { %>
-                    <td class="name"><%= roster[i].name %></td>
-                    <td class="pos"><%= roster[i].position %></td>
-                    <td class="team"><%= roster[i].team %></td>
-                <% } %>
-            </tr>
-        <% } %>
-    </table>
+                </tr>
+            <% } %>
+        </table>
     </div>
     
     

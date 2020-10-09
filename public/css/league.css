@@ -88,13 +88,13 @@ a {
     font-size: 20px;
     padding: 10px 100px;
     background-color: #0D0106;
-    border: 2px solid #29339B;
+    border: 5px solid #29339B;
 }
 
 #profile:hover, #rules:hover, #search:hover, #roster:hover, #league:hover, #players:hover, #logout-box:hover, #signup-box:hover, #login-box:hover {
     text-decoration: underline;
     background-color: #29339B;
-    border: 3px solid #0D0106;
+    border: 5px solid #0D0106;
 }
 #teamScroll {
     width: 75vw;

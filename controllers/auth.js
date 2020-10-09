@@ -7,7 +7,7 @@ const User = require('../models').Users;
 
 const rendSignup = (req,res) => {
     res.render('auth/signup.ejs', {
-        error: true
+        error: false
     })
 }
 const rendLogin = (req,res) => {
@@ -17,18 +17,6 @@ const rendLogin = (req,res) => {
 }
 
 const signup = (req, res) => {
-    // bcrypt.genSalt(10, (err, salt) => {
-    //     if(err) {
-    //         return res.send(err);
-    //     }
-
-    //     bcrypt.hash(req.body.password, salt, (err, hashedPwd) => {
-    //         if(err) {
-    //             return res.send(err);
-    //         }
-
-    //         req.body.password = hashedPwd;
-
             User.create(req.body)
             .then(newUser => {
                 const token = jwt.sign(
