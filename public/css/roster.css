@@ -168,8 +168,8 @@ td {
 }
 #addPlayerLink {
     text-decoration: underline;
-    color: #29339B;
+    color: white;
 }
 #addPlayerLink:hover {
-    color: white;
+    color: #29339B;
 }
